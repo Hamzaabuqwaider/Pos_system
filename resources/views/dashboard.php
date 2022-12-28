@@ -2,20 +2,22 @@
 
 use Core\Helpers\Helper; ?>
 <div class="row">
-    <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4 ">
-        <a href="/users">
-            <div id="Card-1" class="card-1">
-                <div class="card-body">
-                    <h5 class="card-title text-center mb-4">Users</h5>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
-                        <i class="icon-cog fa-solid fa-users fa-2x"></i>
-                        <p class="card-text paragrahp"><strong><?= $data->users_count ?></strong></p>
-                    </div>
+    <?php if (Helper::check_permission(['user:read'])) : ?>
+        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4 ">
+            <a href="/users">
+                <div id="Card-1" class="card-1">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-4">Users</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
+                            <i class="icon-cog fa-solid fa-users fa-2x"></i>
+                            <p class="card-text paragrahp"><strong><?= $data->users_count ?></strong></p>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
+    <?php endif; ?>
 
 
     <div class="  col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4">
