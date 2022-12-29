@@ -8,14 +8,11 @@ class Item extends Model
 {
     public function get_top_5(): array
     {
-
         $stmt = $this->connection->prepare("SELECT * FROM items ORDER BY price DESC LIMIT 5");
-        // $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
         $data = array();
-        // $result = $this->connection->query("SELECT * FROM items ORDER BY price DESC LIMIT 5");
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_object()) {
                 $data[] = $row;

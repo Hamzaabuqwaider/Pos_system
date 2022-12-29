@@ -2,7 +2,7 @@
 
 use Core\Helpers\Helper; ?>
 <div class="row">
-    <?php if (Helper::check_permission(['user:read'])) : ?>
+    <?php if (Helper::check_permission(['user:read'])) {  ?>
         <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4 ">
             <a href="/users">
                 <div id="Card-1" class="card-1">
@@ -17,79 +17,79 @@ use Core\Helpers\Helper; ?>
                 </div>
             </a>
         </div>
-    <?php endif; ?>
 
 
-    <div class="  col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4">
-        <a href="/items">
-            <div id="Card-2" class="card-2">
-                <div class="card-body">
+        <div class="  col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4">
+            <a href="/items">
+                <div id="Card-2" class="card-2">
+                    <div class="card-body">
 
-                    <h5 class="card-title text-center">Total Items</h5>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
+                        <h5 class="card-title text-center">Total Items</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
 
-                        <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
 
-                        <p class="card-text paragrahp"><strong><?= $data->items_count ?></strong></p>
+                            <p class="card-text paragrahp"><strong><?= $data->items_count ?></strong></p>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
 
 
 
 
-    <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
-        <a href="/transactions/page">
-            <div id="Card-3" class="card-4">
-                <div class="card-body">
 
-                    <h5 class="card-title text-center">Total Sales</h5>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
+        <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
+            <a href="/transactions/page">
+                <div id="Card-3" class="card-4">
+                    <div class="card-body">
 
-                        <i class="icon-cog fa-solid fa-store fa-2x mb-2 mt-3"></i>
-                        <p class="card-text paragrahp">$ <strong><?= $data->total_sales ?></strong></p>
+                        <h5 class="card-title text-center">Total Sales</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
 
+                            <i class="icon-cog fa-solid fa-store fa-2x mb-2 mt-3"></i>
+                            <p class="card-text paragrahp">$ <strong><?= $data->total_sales ?></strong></p>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
 
-    <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
-        <a href="/accounts/page">
-            <div id="Card-4" class="card-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Total Transaction</h5>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
+        <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
+            <a href="/accounts/page">
+                <div id="Card-4" class="card-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Total Transaction</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
 
-                        <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
-                        <p class="card-text paragrahp"><strong><?= $data->transaction_count ?></strong></p>
+                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <p class="card-text paragrahp"><strong><?= $data->transaction_count ?></strong></p>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
 
 
-    <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-2">
-        <a href="">
-            <div id="Card-5" class="card-6">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Total quantity</h5>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
+        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-2">
+            <a href="">
+                <div id="Card-5" class="card-6">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Total quantity</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
 
-                        <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
-                        <p class="card-text paragrahp"><strong><?= $data->total_quantity ?></strong></p>
+                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <p class="card-text paragrahp"><strong><?= $data->total_quantity ?></strong></p>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
 
 </div>
 
@@ -140,3 +140,6 @@ use Core\Helpers\Helper; ?>
         </tbody>
     </table>
 </div>
+<?php } else {
+        echo 'No permessions as this page';
+    } ?>
