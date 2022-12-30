@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" value="item_id : <?= $data->transaction->item_id ?>" disabled>
+                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" value="item Name : <?= $data->item_name ?>" disabled>
                         </div>
 
                         <div class="col-md-12">

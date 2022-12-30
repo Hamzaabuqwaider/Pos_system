@@ -40,9 +40,22 @@ class Transactions extends Controller
         $this->view = 'transactions.edit';
         $transaction = new Transaction();
         $selected_transaction = $transaction->get_by_id($_GET['id']);
-        $date = new \DateTime($selected_transaction->updated_at);
-        $selected_transaction->updated_at = $date->format('m/d/Y');
-        $this->data['transaction'] = $selected_transaction;
+
+        $item = new Item;
+        $item_by_id = $item->get_by_id($_GET['item_id']);
+        $item_name = $item_by_id->title;
+        if (!empty($selected_transaction)) {
+
+            $date = new \DateTime($selected_transaction->updated_at);
+            $selected_transaction->updated_at = $date->format('m/d/Y');
+            $this->data['transaction'] = $selected_transaction;
+            $this->data['item_name'] = $item_name;
+        } else {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'no transaction from this id';
+            Helper::redirect('/transactions/page');
+            die;
+        }
     }
 
 
@@ -55,81 +68,80 @@ class Transactions extends Controller
     public function transaction_update()
     {
 
-     
-            $transaction = new Transaction();
-            $selected_transaction = $transaction->get_by_id($_POST['id']);
 
-            $item = new Item();
-            $selected_item = $item->get_by_id($_POST['item_id']);
+        $transaction = new Transaction();
+        $selected_transaction = $transaction->get_by_id($_POST['id']);
 
-            $id_transaction = $_POST['id'];
-            $id_item = $_POST['item_id'];
-            $post_quantity = $_POST['quantity'];
-            $quantity_transaction = $selected_transaction->quantity;
-            $quantity_item = $selected_item->quantity;
+        $item = new Item();
+        $selected_item = $item->get_by_id($_POST['item_id']);
 
-            $result_quantity = 0;
-            $item_final = 0;
+        $id_transaction = $_POST['id'];
+        $id_item = $_POST['item_id'];
+        $post_quantity = $_POST['quantity'];
+        $quantity_transaction = $selected_transaction->quantity;
+        $quantity_item = $selected_item->quantity;
 
-            $price_total = $selected_item->price * $post_quantity;
+        $result_quantity = 0;
+        $item_final = 0;
 
-            if ($quantity_item != 0) {
+        $price_total = $selected_item->price * $post_quantity;
 
-                if ($post_quantity > $quantity_transaction) {
-                    // 2 - 3  = // Item Qauntity +
+        if ($quantity_item != 0) {
 
-                    $result_quantity = $post_quantity - $quantity_transaction;
-                    $item_final = $quantity_item - $result_quantity;
-                }
-            } else {
-                $_SESSION['message'] = "The Item is Empty";
-                $_SESSION['error_type'] = "error";
-                Helper::redirect('/transactions/page');
-            }
-
-
-            //! Check if the post quantity more than quantity current in table item 
-            //* $quantity_transaction The current quantity in transaction table
-            //* $quantity_item The current quantity in item table
-            //* $post_quantity The Post updated quantity item
-            //* $result_differance_quantity = $post_quantity - $quantity transcation
-            //! if result_deffirance_quantity > $quantity_item => error The $post_quantity more than item in database
-
-            $result_differance_quantity = $post_quantity - $quantity_transaction;
-            if ($result_differance_quantity > $quantity_item) {
-                $_SESSION['message'] = "items is not enough";
-                $_SESSION['error_type'] = "warning";
-                Helper::redirect('/transactions/page');
-                die;
-            }
-
-            if ($post_quantity == "") {
-                $_SESSION['message'] = "The Transaction is updated";
-                $_SESSION['error_type'] = "success";
-                Helper::redirect('/transactions/page');
-                die;
-            }
-
-            if ($post_quantity < $quantity_transaction) {
+            if ($post_quantity > $quantity_transaction) {
                 // 2 - 3  = // Item Qauntity +
 
-                $result_quantity = $quantity_transaction - $post_quantity;
-                $item_final = $result_quantity + $quantity_item;
+                $result_quantity = $post_quantity - $quantity_transaction;
+                $item_final = $quantity_item - $result_quantity;
             }
+        } else {
+            $_SESSION['message'] = "The Item is Empty";
+            $_SESSION['error_type'] = "error";
+            Helper::redirect('/transactions/page');
+        }
 
 
-            // $sql_item = "UPDATE items SET quantity = $item_final WHERE id = $id_item";
-            // $item->connection->query($sql_item);
-            $stmt = $item->connection->prepare("UPDATE items SET quantity = ? WHERE id =?");
-            $stmt->bind_param('ii', $item_final, $id_item);
-            $stmt->execute();
-            $stmt->close();
+        //! Check if the post quantity more than quantity current in table item 
+        //* $quantity_transaction The current quantity in transaction table
+        //* $quantity_item The current quantity in item table
+        //* $post_quantity The Post updated quantity item
+        //* $result_differance_quantity = $post_quantity - $quantity transcation
+        //! if result_deffirance_quantity > $quantity_item => error The $post_quantity more than item in database
 
-            $sql_transaction = "UPDATE transactions SET quantity = $post_quantity,total = $price_total WHERE id = $id_transaction";
-            $transaction->connection->query($sql_transaction);
+        $result_differance_quantity = $post_quantity - $quantity_transaction;
+        if ($result_differance_quantity > $quantity_item) {
+            $_SESSION['message'] = "items is not enough";
+            $_SESSION['error_type'] = "warning";
+            Helper::redirect('/transactions/page');
+            die;
+        }
+
+        if ($post_quantity == "") {
             $_SESSION['message'] = "The Transaction is updated";
             $_SESSION['error_type'] = "success";
             Helper::redirect('/transactions/page');
+            die;
+        }
 
+        if ($post_quantity < $quantity_transaction) {
+            // 2 - 3  = // Item Qauntity +
+
+            $result_quantity = $quantity_transaction - $post_quantity;
+            $item_final = $result_quantity + $quantity_item;
+        }
+
+
+        // $sql_item = "UPDATE items SET quantity = $item_final WHERE id = $id_item";
+        // $item->connection->query($sql_item);
+        $stmt = $item->connection->prepare("UPDATE items SET quantity = ? WHERE id =?");
+        $stmt->bind_param('ii', $item_final, $id_item);
+        $stmt->execute();
+        $stmt->close();
+
+        $sql_transaction = "UPDATE transactions SET quantity = $post_quantity,total = $price_total WHERE id = $id_transaction";
+        $transaction->connection->query($sql_transaction);
+        $_SESSION['message'] = "The Transaction is updated";
+        $_SESSION['error_type'] = "success";
+        Helper::redirect('/transactions/page');
     }
 }

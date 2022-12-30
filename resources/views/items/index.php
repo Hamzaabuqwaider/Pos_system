@@ -7,8 +7,8 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">Title</th>
-                    <th class="text-center">cost</th>
                     <th class="text-center">Price</th>
+                    <th class="text-center">Description</th>
                     <th class="text-center">Quantity</th>
                     <th class="text-center">Action</th>
                 </tr>
@@ -28,11 +28,13 @@
                             <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
                         </td>
 
-                        <td class="text-center pt-2">$<?= $item->cost ?></td>
-                        <td class="text-center pt-2">$<?= $item->price ?></td>
-                        <td class="text-center"><?= $item->quantity ?></td>
+                        <td class="text-center pt-2"><span style="font-weight: bold;">$<?= $item->price ?></span></td>
+                        <td>
+                            <p class="fw-bold text-center mt-2"><?= !empty($item->description) ?  $item->description : '<span style="text-decoration: line-through; color:red;"> no desription  </span>'  ?></p>
+                        </td>
+                        <td class="text-center"><span style="font-weight: bold;"> <?= $item->quantity ?></span></td>
                         <td class="text-center">
-                            <a href="./item?id=<?= $item->id; ?>" <i style="text-decoration: none;" class="fa-solid fa-check"></a></i>
+                            <a href="./item?id=<?= $item->id; ?>" <i style="text-decoration: none; color:green;" class="fa-solid fa-check"></a></i>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -51,7 +51,17 @@ class Items extends Controller
         $this->permissions(['item:read']);
         $this->view = 'items.single';
         $item = new Item();
-        $this->data['item'] = $item->get_by_id($_GET['id']);
+        $item_by_id = $item->get_by_id($_GET['id']);
+        if (!empty($item_by_id)) {
+            $date = new \DateTime($item_by_id->created_at);
+            $item_by_id->created_at = $date->format('d/m/Y');
+            $this->data['item'] =  $item_by_id;
+        } else {
+            $_SESSION['message'] = "No item by this id";
+            $_SESSION['error_type'] = "error";
+            Helper::redirect('/items');
+            die;
+        }
     }
 
     /**
@@ -121,8 +131,16 @@ class Items extends Controller
         $this->permissions(['item:read', 'item:update']);
         $this->view = 'items.edit';
         $item = new Item();
-        $selected_item = $item->get_by_id($_GET['id']);;
-        $this->data['item'] = $selected_item;
+        $selected_item = $item->get_by_id($_GET['id']);
+        if (isset($selected_item)) {
+
+            $this->data['item'] = $selected_item;
+        } else {
+            $_SESSION['message'] = "No item by this id";
+            $_SESSION['error_type'] = "error";
+            Helper::redirect('/items');
+            die;
+        }
     }
 
     /**

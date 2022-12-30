@@ -44,7 +44,20 @@ class Users extends Controller
                 $this->permissions(['user:read']);
                 $this->view = 'users.single';
                 $user = new User();
-                $this->data['user'] = $user->get_by_id($_GET['id']);
+                $user_by_id =  $user->get_by_id($_GET['id']);
+
+                if (!empty($user_by_id)) {
+                        $date_created = new \DateTime($user_by_id->created_at);
+                        $user_by_id->created_at = $date_created->format('d/m/Y');
+                        $date_updated = new \DateTime($user_by_id->updated_at);
+                        $user_by_id->updated_at = $date_updated->format('d/m/Y');
+                        $this->data['user'] =  $user_by_id;
+                } else {
+                        $_SESSION['message'] = "No user by this id";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users');
+                        die;
+                }
         }
 
         /**
@@ -67,61 +80,82 @@ class Users extends Controller
         {
                 $this->permissions(['user:create']);
 
-                        if (empty($_POST['username'])) {
-                                $this->http_code = 421;
-                                throw new \Exception('username_param_not_found');
-                        }
+                if (empty($_POST['username'])) {
+                        $_SESSION['message'] = "The username is required";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users/create');
+                        die;
+                }
 
-                        if (empty($_POST['display_name'])) {
-                                $this->http_code = 422;
-                                throw new \Exception('display_name_param_not_found');
-                        }
+                if (empty($_POST['display_name'])) {
+                        $_SESSION['message'] = "The display is required";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users/create');
 
-                        if (empty($_POST['email'])) {
-                                $this->http_code = 423;
-                                throw new \Exception('email_param_not_found');
-                        }
-                        if (empty($_POST['password'])) {
-                                $this->http_code = 423;
-                                throw new \Exception('password_param_not_found');
-                        }
+                        die;
+                }
+
+                if (empty($_POST['email'])) {
+                        $_SESSION['message'] = "The email is required";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users/create');
+                        die;
+                }
+                if (empty($_POST['password'])) {
+                        $_SESSION['message'] = "The password is required";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users/create');
+                        die;
+                }
 
 
-                        $user = new User();
-                        $_POST['username'] =  \htmlspecialchars($_POST['username']);
-                        $_POST['display_name'] =  \htmlspecialchars($_POST['display_name']);
-                        $_POST['email'] =  \htmlspecialchars($_POST['email']);
+                $user = new User();
+                $users = $user->get_all();
+                $users_email = array();
+                foreach ($users as $user_id) {
+                        array_push($users_email, $user_id->email);
+                }
 
-                        $permissions = null;
-                        switch ($_POST['role']) {
-                                case 'admin':
-                                        $permissions = User::ADMIN;
-                                        break;
+                if (in_array($_POST['email'], $users_email)) {
+                        $_SESSION['message'] = "This email already exists";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users/create');
+                        die;
+                }
 
-                                case 'procurement':
-                                        $permissions = User::PROCUREMENT;
-                                        break;
+                $_POST['username'] =  \htmlspecialchars($_POST['username']);
+                $_POST['display_name'] =  \htmlspecialchars($_POST['display_name']);
+                $_POST['email'] =  \htmlspecialchars($_POST['email']);
 
-                                case 'seller':
-                                        $permissions = User::SELLER;
-                                        break;
+                $permissions = null;
+                switch ($_POST['role']) {
+                        case 'admin':
+                                $permissions = User::ADMIN;
+                                break;
 
-                                case 'account':
-                                        $permissions = User::ACCOUNT;
-                                        break;
-                        }
-                        unset($_POST['role']);
-                        $_POST['permissions'] = \serialize($permissions);
+                        case 'procurement':
+                                $permissions = User::PROCUREMENT;
+                                break;
 
-                        $result = self::check_empty_user();
-                        if ($result) {
-                                $_POST['password'] = \password_hash($_POST['password'], \PASSWORD_DEFAULT);
-                                $user->create($_POST);
-                                $_SESSION['error_type'] = "success";
-                                $_SESSION['message'] = 'user Created';
-                                Helper::redirect('/users');
-                        }
+                        case 'seller':
+                                $permissions = User::SELLER;
+                                break;
 
+                        case 'account':
+                                $permissions = User::ACCOUNT;
+                                break;
+                }
+                unset($_POST['role']);
+                $_POST['permissions'] = \serialize($permissions);
+
+                $result = self::check_empty_user();
+                if ($result) {
+                        $_POST['password'] = \password_hash($_POST['password'], \PASSWORD_DEFAULT);
+                        $user->create($_POST);
+                        $_SESSION['error_type'] = "success";
+                        $_SESSION['message'] = 'user Created';
+                        Helper::redirect('/users');
+                }
         }
 
         /**
@@ -135,7 +169,16 @@ class Users extends Controller
                 $this->permissions(['user:read', 'user:update']);
                 $this->view = 'users.edit';
                 $user = new User();
-                $this->data['user'] = $user->get_by_id($_GET['id']);
+                $user_by_id = $user->get_by_id($_GET['id']);
+                if (!empty($user_by_id)) {
+
+                        $this->data['user'] = $user->get_by_id($_GET['id']);
+                } else {
+                        $_SESSION['message'] = "No User for this id";
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/users');
+                        die;
+                }
         }
 
         /**
@@ -147,37 +190,36 @@ class Users extends Controller
         {
                 $this->permissions(['user:read', 'user:update']);
 
-                        $user = new User();
-                        $user_info = $user->get_by_id($_POST['id']);
+                $user = new User();
+                $user_info = $user->get_by_id($_POST['id']);
 
-                        $permissions = null;
-                        switch ($_POST['role']) {
-                                case 'admin':
-                                        $permissions = User::ADMIN;
-                                        break;
+                $permissions = null;
+                switch ($_POST['role']) {
+                        case 'admin':
+                                $permissions = User::ADMIN;
+                                break;
 
-                                case 'procurement':
-                                        $permissions = User::PROCUREMENT;
-                                        break;
+                        case 'procurement':
+                                $permissions = User::PROCUREMENT;
+                                break;
 
-                                case 'seller':
-                                        $permissions = User::SELLER;
-                                        break;
+                        case 'seller':
+                                $permissions = User::SELLER;
+                                break;
 
-                                case 'account':
-                                        $permissions = User::ACCOUNT;
-                                        break;
-                        }
-                        unset($_POST['role']);
-                        $_POST['permissions'] = \serialize($permissions);
-                        $password_new = empty($_POST['new-password']) ? NULL : \password_hash($_POST['new-password'], \PASSWORD_DEFAULT);
-                        $_POST['password'] = empty($_POST['new-password']) ? $user_info->password : $password_new;
-                        unset($_POST['new-password']);
-                        $user->update($_POST);
-                        $_SESSION['error_type'] = "success";
-                        $_SESSION['message'] = 'user updated';
-                        Helper::redirect('/user?id=' . $_POST['id']);
-
+                        case 'account':
+                                $permissions = User::ACCOUNT;
+                                break;
+                }
+                unset($_POST['role']);
+                $_POST['permissions'] = \serialize($permissions);
+                $password_new = empty($_POST['new-password']) ? NULL : \password_hash($_POST['new-password'], \PASSWORD_DEFAULT);
+                $_POST['password'] = empty($_POST['new-password']) ? $user_info->password : $password_new;
+                unset($_POST['new-password']);
+                $user->update($_POST);
+                $_SESSION['error_type'] = "success";
+                $_SESSION['message'] = 'user updated';
+                Helper::redirect('/user?id=' . $_POST['id']);
         }
 
         /**
@@ -218,12 +260,11 @@ class Users extends Controller
         {
                 $this->permissions(['user:delete']);
 
-                        $user = new User();
-                        $user->delete($_GET['id']);
-                        $_SESSION['error_type'] = "success";
-                        $_SESSION['message'] = 'user deleted';
-                        Helper::redirect('/users');
-
+                $user = new User();
+                $user->delete($_GET['id']);
+                $_SESSION['error_type'] = "success";
+                $_SESSION['message'] = 'user deleted';
+                Helper::redirect('/users');
         }
 
 
@@ -267,6 +308,8 @@ class Users extends Controller
         {
                 $user = new User();
                 $user_info = $user->get_by_id($_POST['id']);
+
+
                 $_POST['username'] =  \htmlspecialchars($_POST['username']);
                 $_POST['display_name'] =  \htmlspecialchars($_POST['display_name']);
                 $_POST['email'] =  \htmlspecialchars($_POST['email']);
