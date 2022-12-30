@@ -1,5 +1,4 @@
 <h1 class="mb-5" style="font-family: 'Roboto', sans-serif;">Items Page</h1>
-<hr>
 <!-- <div class="container my-5"> -->
 <div class="d-flex justify-content-center align-items-center">
     <div id="scrol-table">

@@ -1,5 +1,4 @@
 <h1 class="mb-5" style="font-family: 'Roboto', sans-serif;">Accounts Page</h1>
-<hr>
 <h1 class="text-center">Total <span style="color:red">$<?= $data->total_price ?></span></h1>
 
 <div class="d-flex justify-content-center align-items-center">
