@@ -36,7 +36,7 @@ footer * {
 }
 
 .paragrahp {
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .card-body {
@@ -171,6 +171,19 @@ footer * {
   opacity      : 0.8;
   transition   : 0.5s;
 
+}
+
+
+.card-7 {
+  width        : 320px;
+  padding      : 20px;
+  border-radius: 20px;
+  color        : rgb(255, 255, 255);
+  /* background: rgb(22, 185, 0); */
+  background   : -webkit-linear-gradient(to right, #c7d6e4, #a7cfe6);
+  background   : linear-gradient(to right, #0a504a, #000000) !important;
+  opacity      : 0.8;
+  transition   : 0.5s;
 }
 
 .card-4 {

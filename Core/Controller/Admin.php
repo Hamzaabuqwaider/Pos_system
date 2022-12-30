@@ -50,11 +50,27 @@ class Admin extends Controller
             $total_quantity += $quantity->quantity;
         }
         $transaction = new Transaction; // new model user.
+
+        $stmt1 = $transaction->connection->prepare("SELECT *,items.cost,items.price,transactions.quantity as quantity_trans FROM `transactions` INNER JOIN items on items.id = transactions.item_id");
+        $stmt1->execute();
+        $result = $stmt1->get_result();
+        $profit = 0;
+        foreach ($result as $res) {
+            $result_trans = $res['quantity_trans'] * ($res['price'] - $res['cost']);
+            $profit += $result_trans;
+        }
+
+
+        $stmt1->close();
+
+
+
         $this->data['user_info'] = $user->get_by_id($_SESSION['user']['user_id']);
         $this->data['users_count'] = count($user->get_all());
         $this->data['items_count'] = count($item->get_all());
         $this->data['transaction_count'] = count($transaction->get_all());
         $this->data['total_sales'] = $total;
+        $this->data['profit'] = $profit;
 
 
         $this->data['items'] = $item->get_top_5();

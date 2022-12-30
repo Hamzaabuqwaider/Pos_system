@@ -50,7 +50,7 @@ use Core\Helpers\Helper; ?>
                         <div class="d-flex justify-content-center flex-column align-items-center">
 
                             <i class="icon-cog fa-solid fa-store fa-2x mb-2 mt-3"></i>
-                            <p class="card-text paragrahp">$ <strong><?= $data->total_sales ?></strong></p>
+                            <p class="card-text paragrahp">$ <strong><?= number_format($data->total_sales) ?> JOD</strong></p>
 
                         </div>
                     </div>
@@ -84,6 +84,22 @@ use Core\Helpers\Helper; ?>
 
                             <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
                             <p class="card-text paragrahp"><strong><?= $data->total_quantity ?></strong></p>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-2">
+            <a href="">
+                <div id="Card-6" class="card-7">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Clear profit</h5>
+                        <div class="d-flex justify-content-center flex-column align-items-center">
+
+                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <p class="card-text paragrahp">$ <?= number_format($data->profit) ?> JOD</p>
 
                         </div>
                     </div>
