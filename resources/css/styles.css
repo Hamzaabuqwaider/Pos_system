@@ -316,7 +316,7 @@ aside .side-inner .nav-menu ul li a:hover {
   color        : rgb(255, 255, 255);
   /* background: rgb(22, 185, 0); */
   background   : -webkit-linear-gradient(to right, #334a5f, #d1d1d1);
-  background   : linear-gradient(to right, #949090, #5a5a5a);
+  background   : linear-gradient(to right, #000000, #000000);
   opacity      : 0.8;
 
   /* border               : 3px solid #fff; */
@@ -777,7 +777,8 @@ aside .side-inner .nav-menu ul li a:hover {
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width     : 10px;
+    background: #F5F5F5;
   }
 
 

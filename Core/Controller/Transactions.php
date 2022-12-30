@@ -40,6 +40,8 @@ class Transactions extends Controller
         $this->view = 'transactions.edit';
         $transaction = new Transaction();
         $selected_transaction = $transaction->get_by_id($_GET['id']);
+        $date = new \DateTime($selected_transaction->updated_at);
+        $selected_transaction->updated_at = $date->format('m/d/Y');
         $this->data['transaction'] = $selected_transaction;
     }
 

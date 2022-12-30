@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between">
     <h1 style="font-family: 'Roboto', sans-serif;">Selling Page</h1>
+
 </div>
-<hr>
 <div class="form_style mb-4">
     <form id="userInputContainer" class="my-4 d-flex justify-content-between ">
         <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
@@ -27,6 +27,7 @@
         <strong>Total Sales : $<span id="total-sales"></span></strong>
 
     </div>
+
     <table class="table table-hover">
         <thead>
             <tr>

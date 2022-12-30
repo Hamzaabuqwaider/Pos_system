@@ -36,7 +36,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0" style="font-weight: bold;">Email</p>
+                                <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted1 mb-0" style="font-weight: bold;"><?= $data->info->email ?></p>

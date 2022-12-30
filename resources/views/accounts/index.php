@@ -1,4 +1,5 @@
 <h1 class="mb-5" style="font-family: 'Roboto', sans-serif;">Accounts Page</h1>
+<hr>
 <h1 class="text-center">Total <span style="color:red">$<?= $data->total_price ?></span></h1>
 
 <div class="d-flex justify-content-center align-items-center">
@@ -6,11 +7,11 @@
         <table class="table tabel-shadow align-middle mb-0 bg-white">
             <thead class="bg-light">
                 <tr>
-                    <th class="ps-5">Name User</th>
+                    <th class="ps-5">Name Seller</th>
                     <th>Item Name</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>created_at</th>
+                    <th>updated_at</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,9 +39,9 @@
                         </td>
                         <td>$<?= $transaction->total ?></td>
                         <td>
-                            <?php $date = new \DateTime($transaction->created_at);
-                            $transaction->created_at = $date->format('d/m/Y');
-                            echo $transaction->created_at;
+                            <?php $date = new \DateTime($transaction->updated_at);
+                            $transaction->updated_at = $date->format('d/m/Y');
+                            echo $transaction->updated_at;
                             ?>
                         </td>
                         <td>

@@ -1,4 +1,6 @@
-<h1 class="mb-4" style="font-family: 'Roboto', sans-serif;">Users List</h1>
+<h1 class="mb-5" style="font-family: 'Roboto', sans-serif;">Users List</h1>
+<hr>
+
 <div class="d-flex justify-content-center align-items-center">
     <div id="scrol-table">
         <table class="table table-bordered tabel-shadow align-middle mb-0 bg-white">

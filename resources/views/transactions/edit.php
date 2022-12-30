@@ -20,18 +20,22 @@
                         endif; ?>
 
                         <div class="col-md-12">
-                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" placeholder="transaction Title" value="<?= $data->transaction->id ?>" disabled>
+                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" value="transaction_id : <?= $data->transaction->id ?>" disabled>
                         </div>
 
                         <div class="col-md-12">
-                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" placeholder="transaction Title" value="<?= $data->transaction->item_id ?>" disabled>
+                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" value="item_id : <?= $data->transaction->item_id ?>" disabled>
                         </div>
 
                         <div class="col-md-12">
-                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="quantity" placeholder="<?= $data->transaction->quantity ?>" value="">
+                            <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="quantity" placeholder="quantity : <?= $data->transaction->quantity ?>" value="">
 
                             <div class="col-md-12">
-                                <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="total" placeholder="transaction totam" value="$ <?= $data->transaction->total ?>" disabled>
+                                <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="total" value="$ <?= $data->transaction->total ?>" disabled>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="total" value="Last Updated : <?= $data->transaction->updated_at ?>" disabled>
                             </div>
 
                             <div class="form-button mt-3">

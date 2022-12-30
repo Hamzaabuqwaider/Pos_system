@@ -141,5 +141,7 @@ use Core\Helpers\Helper; ?>
     </table>
 </div>
 <?php } else {
-        echo 'No permessions as this page';
+
+        $_SESSION['message'] = "You do not have permission to access this page";
+        $_SESSION['error_type'] = "error";
     } ?>

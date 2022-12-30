@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <lable class="mb-0">Display Name</lable>
+                                    <lable class="mb-0">Name</lable>
                                 </div>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="display_name" value="<?= $data->info->display_name ?>">
