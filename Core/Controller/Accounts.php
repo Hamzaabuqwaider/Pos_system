@@ -99,7 +99,7 @@ class Accounts extends Controller
                 }
 
                 $price_total = $item_by_id->price * $request_quantity;
-
+                //! check if the quantity item selected is empty before update the quantity in the Account page
                 if ($quantity_item_current != 0) {
 
                         if ($request_quantity > $quantity_transaction_current) {
@@ -114,6 +114,16 @@ class Accounts extends Controller
                         Helper::redirect('/accounts/page');
                 }
 
+
+                //! Check if the post quantity more than quantity current in table item 
+                //* $quantity_transaction The current quantity in transaction table
+                //* $quantity_item The current quantity in item table
+                //* $post_quantity The Post updated quantity item
+                //* $result_differance_quantity = $post_quantity - $quantity transcation
+                //! if result_deffirance_quantity > $quantity_item => error The $post_quantity more than item in database
+
+
+                //* check the quantitu in table item < defferance_quantity 
                 $result_differance_quantity = $request_quantity - $quantity_transaction_current;
                 if ($result_differance_quantity > $quantity_item_current) {
                         $_SESSION['message'] = "item quantity in stock not enogh";
@@ -130,16 +140,17 @@ class Accounts extends Controller
                         $result_quantity = $quantity_transaction_current - $request_quantity;
                         $item_final = $result_quantity + $quantity_item_current;
                 }
-
+                //! update the quantity in the table items after updated from the account page
                 $stmt = $item->connection->prepare("UPDATE items SET quantity = ? WHERE id = ?");
                 $stmt->bind_param('ii', $item_final, $id_item);
                 $stmt->execute();
                 $stmt->close();
 
-                $stmt = $transaction->connection->prepare("UPDATE transactions SET quantity = ?,total = ? WHERE id = ?");
-                $stmt->bind_param('iii', $request_quantity, $price_total, $id_transaction);
-                $stmt->execute();
-                $stmt->close();
+                //! update transactions about total and quantity
+                $stmt1 = $transaction->connection->prepare("UPDATE transactions SET quantity = ?,total = ? WHERE id = ?");
+                $stmt1->bind_param('iii', $request_quantity, $price_total, $id_transaction);
+                $stmt1->execute();
+                $stmt1->close();
                 $_SESSION['message'] = "The Transaction is updated";
                 $_SESSION['error_type'] = "success";
                 Helper::redirect('/accounts/page');

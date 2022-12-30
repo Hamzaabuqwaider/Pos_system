@@ -55,7 +55,7 @@ class Transactions extends Controller
     public function transaction_update()
     {
 
-        try {
+     
             $transaction = new Transaction();
             $selected_transaction = $transaction->get_by_id($_POST['id']);
 
@@ -130,10 +130,6 @@ class Transactions extends Controller
             $_SESSION['message'] = "The Transaction is updated";
             $_SESSION['error_type'] = "success";
             Helper::redirect('/transactions/page');
-        } catch (\Exception $error) {
-            $this->response_schema['success'] = false;
-            $this->response_schema['message_code'] = $error->getMessage();
-            $this->http_code = 421;
-        }
+
     }
 }

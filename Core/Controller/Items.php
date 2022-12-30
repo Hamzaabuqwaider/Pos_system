@@ -76,45 +76,37 @@ class Items extends Controller
     public function store()
     {
         $this->permissions(['item:create']);
-        try {
 
 
-            if (empty($_POST['title'])) {
-                $this->http_code = 421;
-                throw new \Exception('title_not_found');
-            }
+        if (empty($_POST['title'])) {
 
-            if (empty($_POST['cost'])) {
-                $this->http_code = 422;
-                throw new \Exception('cost_not_found');
-            }
+            echo 'title_not_found';
+        }
 
-            if (empty($_POST['price'])) {
-                $this->http_code = 423;
-                throw new \Exception('price_not_found');
-            }
-            if (empty($_POST['quantity'])) {
-                $this->http_code = 423;
-                throw new \Exception('quantity_not_found');
-            }
+        if (empty($_POST['cost'])) {
+            echo 'cost_not_found';
+        }
 
-            $item = new Item();
-            $_POST['user_id'] = $_SESSION['user']['user_id'];
-            $_POST['title'] =  \htmlspecialchars($_POST['title']);
-            $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
-            $_POST['price'] =  \htmlspecialchars($_POST['price']);
-            $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
+        if (empty($_POST['price'])) {
+            echo 'price_not_found';
+        }
+        if (empty($_POST['quantity'])) {
+            echo 'quantity_not_found';
+        }
 
-            $result = self::check_empty();
-            if ($result) {
-                $item->create($_POST);
-                $_SESSION['error_type'] = "success";
-                $_SESSION['message'] = 'Item Created';
-                Helper::redirect('/items');
-            }
-        } catch (\Exception $error) {
-            $this->response_schema['success'] = false;
-            $this->response_schema['message_code'] = $error->getMessage();
+        $item = new Item();
+        $_POST['user_id'] = $_SESSION['user']['user_id'];
+        $_POST['title'] =  \htmlspecialchars($_POST['title']);
+        $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
+        $_POST['price'] =  \htmlspecialchars($_POST['price']);
+        $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
+
+        $result = self::check_empty();
+        if ($result) {
+            $item->create($_POST);
+            $_SESSION['error_type'] = "success";
+            $_SESSION['message'] = 'Item Created';
+            Helper::redirect('/items');
         }
     }
 
@@ -143,24 +135,19 @@ class Items extends Controller
     public function update()
     {
         $this->permissions(['item:read', 'item:update']);
-        try {
 
-            $item = new Item();
-            $item_id = $_POST['id'];
-            $_POST['title'] =  \htmlspecialchars($_POST['title']);
-            $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
-            $_POST['price'] =  \htmlspecialchars($_POST['price']);
-            $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
-            $_POST['description'] =  \htmlspecialchars($_POST['description']);
-            $item->update($_POST);
-            $_SESSION['error_type'] = "success";
-            $_SESSION['message'] = 'Item Updated';
+        $item = new Item();
+        $item_id = $_POST['id'];
+        $_POST['title'] =  \htmlspecialchars($_POST['title']);
+        $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
+        $_POST['price'] =  \htmlspecialchars($_POST['price']);
+        $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
+        $_POST['description'] =  \htmlspecialchars($_POST['description']);
+        $item->update($_POST);
+        $_SESSION['error_type'] = "success";
+        $_SESSION['message'] = 'Item Updated';
 
-            Helper::redirect('/item?id=' . $_POST['id']);
-        } catch (\Exception $error) {
-            $this->response_schema['success'] = false;
-            $this->response_schema['message_code'] = $error->getMessage();
-        }
+        Helper::redirect('/item?id=' . $_POST['id']);
     }
 
     /**
@@ -173,16 +160,10 @@ class Items extends Controller
     {
 
         $this->permissions(['item:read', 'item:delete']);
-        try {
-            $item = new Item();
-            $item->delete($_GET['id']);
-            $_SESSION['error_type'] = "success";
-            $_SESSION['message'] = 'Item Deleted';
-            Helper::redirect('/items');
-        } catch (\Exception $error) {
-            $this->response_schema['success'] = false;
-            $this->response_schema['message_code'] = $error->getMessage();
-            $this->http_code = 421;
-        }
+        $item = new Item();
+        $item->delete($_GET['id']);
+        $_SESSION['error_type'] = "success";
+        $_SESSION['message'] = 'Item Deleted';
+        Helper::redirect('/items');
     }
 }

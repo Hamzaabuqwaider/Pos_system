@@ -34,7 +34,6 @@ class Admin extends Controller
      */
     public function index()
     {
-        // $this->permissions(['user:read']);
         $this->view = 'dashboard';
         $total = 0;
         $user = new User; // new model user.

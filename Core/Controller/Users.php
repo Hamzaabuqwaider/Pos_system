@@ -66,7 +66,6 @@ class Users extends Controller
         public function store()
         {
                 $this->permissions(['user:create']);
-                try {
 
                         if (empty($_POST['username'])) {
                                 $this->http_code = 421;
@@ -122,10 +121,7 @@ class Users extends Controller
                                 $_SESSION['message'] = 'user Created';
                                 Helper::redirect('/users');
                         }
-                } catch (\Exception $error) {
-                        $this->response_schema['success'] = false;
-                        $this->response_schema['message_code'] = $error->getMessage();
-                }
+
         }
 
         /**
@@ -150,7 +146,7 @@ class Users extends Controller
         public function update()
         {
                 $this->permissions(['user:read', 'user:update']);
-                try {
+
                         $user = new User();
                         $user_info = $user->get_by_id($_POST['id']);
 
@@ -181,10 +177,7 @@ class Users extends Controller
                         $_SESSION['error_type'] = "success";
                         $_SESSION['message'] = 'user updated';
                         Helper::redirect('/user?id=' . $_POST['id']);
-                } catch (\Exception $error) {
-                        $this->response_schema['success'] = false;
-                        $this->response_schema['message_code'] = $error->getMessage();
-                }
+
         }
 
         /**
@@ -224,16 +217,13 @@ class Users extends Controller
         public function delete()
         {
                 $this->permissions(['user:delete']);
-                try {
+
                         $user = new User();
                         $user->delete($_GET['id']);
                         $_SESSION['error_type'] = "success";
                         $_SESSION['message'] = 'user deleted';
                         Helper::redirect('/users');
-                } catch (\Exception $error) {
-                        $this->response_schema['success'] = false;
-                        $this->response_schema['message_code'] = $error->getMessage();
-                }
+
         }
 
 
