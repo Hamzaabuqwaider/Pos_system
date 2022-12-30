@@ -59,9 +59,19 @@ class Accounts extends Controller
                 $this->view = "accounts.edit";
                 $transaction = new Transaction();
                 $selected_transaction = $transaction->get_by_id($_GET['id']);
-                $date = new \DateTime($selected_transaction->updated_at);
-                $selected_transaction->updated_at = $date->format('m/d/Y');
-                $this->data['transaction'] = $selected_transaction;
+
+                //! validation from transaction is exists
+                if (!empty($selected_transaction)) {
+
+                        $date = new \DateTime($selected_transaction->updated_at);
+                        $selected_transaction->updated_at = $date->format('d/m/Y');
+                        $this->data['transaction'] = $selected_transaction;
+                } else {
+                        $_SESSION['message'] = 'No Transaction from this id';
+                        $_SESSION['error_type'] = "error";
+                        Helper::redirect('/accounts/page');
+                        die;
+                }
         }
 
 
@@ -78,6 +88,7 @@ class Accounts extends Controller
 
                 $transaction = new Transaction();
                 $transaction_by_id = $transaction->get_by_id($_POST['id']);
+
 
                 $item = new Item();
                 $item_by_id = $item->get_by_id($_POST['item_id']);
@@ -103,7 +114,6 @@ class Accounts extends Controller
                 if ($quantity_item_current != 0) {
 
                         if ($request_quantity > $quantity_transaction_current) {
-                                // 2 - 3  = // Item Qauntity +
 
                                 $result_quantity = $request_quantity - $quantity_transaction_current;
                                 $item_final = $quantity_item_current - $result_quantity;
@@ -112,6 +122,7 @@ class Accounts extends Controller
                         $_SESSION['message'] = "The Item is Empty";
                         $_SESSION['error_type'] = "error";
                         Helper::redirect('/accounts/page');
+                        die;
                 }
 
 
@@ -133,10 +144,8 @@ class Accounts extends Controller
                 }
 
 
-
+                //! check if request quantity < quantity_transaction_current then plus different item quantity yo tabel item quantity  
                 if ($request_quantity < $quantity_transaction_current) {
-                        // 2 - 3  = // Item Qauntity +
-
                         $result_quantity = $quantity_transaction_current - $request_quantity;
                         $item_final = $result_quantity + $quantity_item_current;
                 }

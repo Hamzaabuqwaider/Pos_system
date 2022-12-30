@@ -24,6 +24,7 @@ use Core\Model\User;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,900&family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/pos20.png">
 
 </head>
 

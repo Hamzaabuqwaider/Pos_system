@@ -10,7 +10,7 @@
                     <th>Item Name</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>updated_at</th>
+                    <th>created_at</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,9 +38,9 @@
                         </td>
                         <td>$<?= $transaction->total ?></td>
                         <td>
-                            <?php $date = new \DateTime($transaction->updated_at);
-                            $transaction->updated_at = $date->format('d/m/Y');
-                            echo $transaction->updated_at;
+                            <?php $date = new \DateTime($transaction->created_at);
+                            $transaction->created_at = $date->format('d/m/Y');
+                            echo $transaction->created_at;
                             ?>
                         </td>
                         <td>

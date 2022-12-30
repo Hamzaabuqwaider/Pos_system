@@ -174,8 +174,7 @@ class Api_transaction extends Controller
                 $stmt1->execute();
                 $stmt1->close();
 
-                // $sql = "INSERT INTO users_transactions (transaction_id,user_id) VALUES ($transactions->id,{$this->request_body['user_id']})";
-                // $transaction->connection->query($sql);
+
 
                 $item_current = $item_result->quantity - $quantity_order;
 
@@ -184,11 +183,9 @@ class Api_transaction extends Controller
                 $stmt->execute();
                 $stmt->close();
 
-                // $sql = "UPDATE items SET quantity = $item_current WHERE id = $item_result->id";
-                // $item->connection->query($sql);
+
                 $this->response_schema['message_code'] = "Transaction_created_successfuly";
                 $this->response_schema['body'][] = $transactions;
-                // $this->response_schema['body']['item_title'] = $item_result->title;
             }
         } catch (\Exception $error) {
             $this->response_schema['success'] = false;
