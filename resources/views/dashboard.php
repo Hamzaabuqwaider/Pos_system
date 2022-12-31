@@ -64,8 +64,7 @@ use Core\Helpers\Helper; ?>
                     <div class="card-body">
                         <h5 class="card-title text-center">Total Transaction</h5>
                         <div class="d-flex justify-content-center flex-column align-items-center">
-
-                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <i class="fa-solid fa-cart-shopping fa-layer-group fa-2x mb-2 mt-3"></i>
                             <p class="card-text paragrahp"><strong><?= $data->transaction_count ?></strong></p>
 
                         </div>
@@ -79,10 +78,9 @@ use Core\Helpers\Helper; ?>
             <a href="">
                 <div id="Card-5" class="card-6">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Total quantity</h5>
+                        <h5 class="card-title text-center">Total quantity items</h5>
                         <div class="d-flex justify-content-center flex-column align-items-center">
-
-                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <i class="fa-solid fa-sigma fa-layer-group fa-2x mb-2 mt-3"></i>
                             <p class="card-text paragrahp"><strong><?= $data->total_quantity ?></strong></p>
 
                         </div>
@@ -97,8 +95,7 @@ use Core\Helpers\Helper; ?>
                     <div class="card-body">
                         <h5 class="card-title text-center">Clear profit</h5>
                         <div class="d-flex justify-content-center flex-column align-items-center">
-
-                            <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
+                            <i class="fa-solid fa-money-check-dollar fa-layer-group fa-2x mb-2 mt-3"></i>
                             <p class="card-text paragrahp">$ <?= number_format($data->profit) ?> JOD</p>
 
                         </div>
@@ -142,7 +139,7 @@ use Core\Helpers\Helper; ?>
                         </div>
                     </td>
                     <td>
-                        <p class="text-muted mb-0 text-center"><?= $item->title ?></p>
+                        <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
                     </td>
                     <td class="text-center">
                         $<?= $item->cost ?>
