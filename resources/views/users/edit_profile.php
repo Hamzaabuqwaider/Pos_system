@@ -1,5 +1,5 @@
 <button class="btn">
-    <a href="/user/profile?id=<?= $data->info->id ?>""><i style="outline: none;" class="fa-solid fa-arrow-left fa-2x hov-i"></i></a>
+    <a href="/user/profile?id=<?= $data->info->id ?>""><i style=" outline: none;" class="fa-solid fa-arrow-left fa-2x hov-i"></i></a>
 </button>
 <section>
     <div class="container py-5">
@@ -9,7 +9,7 @@
                     <div class="cent opac">
                         <div class="card card-profile height-card mt-4">
                             <div class="card-body text-center">
-                                <img class="img-style mb-2" name="img" src="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $data->info->img ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <img class="img-style mb-2" name="img" src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST']  ?>/resources/Images/<?= $data->info->img ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <input type="file" id="uplode-img-edit" class="form-control" name="upload" style="background-color: #ddd;">
 
                                 <div class="d-flex justify-content-center mb-2">

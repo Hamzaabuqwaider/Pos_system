@@ -2,7 +2,6 @@
 
 
 if (window.location.href === 'http://pos.project:8080/transactions/page') {
-
     $(function () {
         var user_id = $('#user_id');
         var item_id;

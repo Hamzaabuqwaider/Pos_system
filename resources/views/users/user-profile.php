@@ -4,7 +4,7 @@
             <div class="col-lg-5 col-md-12 col-sm-12 p-0">
                 <div class="card card-profile height-card mb-4">
                     <div class="card-body text-center">
-                        <img src="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $data->info->img ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $data->info->img ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3"><?= $data->info->display_name ?></h5>
 
                         <div class="d-flex justify-content-center mb-2">

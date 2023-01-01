@@ -10,7 +10,6 @@ const active = document.querySelectorAll("ul li a").forEach((item) => {
 
 const add_title = () => {
     let title_page = document.createElement('title');
-    let name_title
     title_page.textContent = `${document.location.pathname.slice(1).replace('/', ' ')}`;
     document.head.appendChild(title_page)
 };

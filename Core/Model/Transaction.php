@@ -16,8 +16,6 @@ class Transaction extends Model
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        // $stmt->close();
-        // $result = $this->connection->query("SELECT * FROM users_transactions WHERE user_id = $user_id");
 
         $transaction_id = array();
         foreach ($result as $transaction) {
@@ -34,7 +32,6 @@ class Transaction extends Model
             $stmt->execute();
             $result_transaction = $stmt->get_result();
             $stmt->close();
-            // $result_transaction = $this->connection->query("SELECT * FROM transactions WHERE id = $transaction_select");
 
             foreach ($result_transaction as $result_array) {
 
@@ -43,7 +40,6 @@ class Transaction extends Model
         }
 
         foreach ($data_result as $result_data) {
-            // $result_data['created_at'];
             $date = new \DateTime($result_data['created_at']);
             $result_data['created_at'] = $date->format('m/d/Y');
 
@@ -62,7 +58,6 @@ class Transaction extends Model
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
-        // $result = $this->connection->query("SELECT * FROM $this->table WHERE id=$id");
         return $result->fetch_object();
     }
 }

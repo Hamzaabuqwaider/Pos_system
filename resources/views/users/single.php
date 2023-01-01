@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="card card-y">
             <div class="view overlay">
-                <img class="card-img-top" src="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $data->user->img ?>" alt="Card image cap">
+                <img class="card-img-top" src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST']  ?>/resources/Images/<?= $data->user->img ?>" alt="Card image cap">
                 <a href="#!">
                     <div class="mask rgba-white-slight"></div>
                 </a>

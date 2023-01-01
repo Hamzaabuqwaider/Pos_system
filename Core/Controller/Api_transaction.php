@@ -128,10 +128,6 @@ class Api_transaction extends Controller
     function transaction_create()
     {
         $this->permissions(['seller:create']);
-        self::check_if_empty($this->request_body['item_id']);
-        self::check_if_empty($this->request_body['quantity']);
-        self::check_if_empty($this->request_body['total']);
-
         try {
             if (!isset($this->request_body['quantity'])) {
                 $this->http_code = 422;
