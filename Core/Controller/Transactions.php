@@ -124,15 +124,12 @@ class Transactions extends Controller
         }
 
         if ($post_quantity < $quantity_transaction) {
-            // 2 - 3  = // Item Qauntity +
 
             $result_quantity = $quantity_transaction - $post_quantity;
             $item_final = $result_quantity + $quantity_item;
         }
 
 
-        // $sql_item = "UPDATE items SET quantity = $item_final WHERE id = $id_item";
-        // $item->connection->query($sql_item);
         $stmt = $item->connection->prepare("UPDATE items SET quantity = ? WHERE id =?");
         $stmt->bind_param('ii', $item_final, $id_item);
         $stmt->execute();

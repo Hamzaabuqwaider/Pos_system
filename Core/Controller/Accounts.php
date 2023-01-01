@@ -3,7 +3,6 @@
 namespace Core\Controller;
 
 use Core\Model\Item;
-use Core\Model\User;
 use Core\Helpers\Tests;
 use Core\Model\Account;
 use Core\Helpers\Helper;

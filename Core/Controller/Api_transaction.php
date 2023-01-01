@@ -165,13 +165,13 @@ class Api_transaction extends Controller
             } else {
                 $transaction = new Transaction;
                 $transaction->create($transaction_arr);
+
                 $transactions = $transaction->get_by_id_title($transaction->connection->insert_id);
 
                 $stmt1 = $transaction->connection->prepare("INSERT INTO users_transactions (transaction_id,user_id) VALUES (?,?)");
                 $stmt1->bind_param('ii', $transactions->id, $this->request_body['user_id']);
                 $stmt1->execute();
                 $stmt1->close();
-
 
 
                 $item_current = $item_result->quantity - $quantity_order;
