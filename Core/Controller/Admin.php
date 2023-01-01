@@ -67,7 +67,7 @@ class Admin extends Controller
 
         $this->data['user_info'] = $user->get_by_id($_SESSION['user']['user_id']);
         $this->data['users_count'] = count($user->get_all());
-        $this->data['items_count'] = count($item->get_all());
+        $this->data['items_count_all'] = count($item->get_all());
         $this->data['transaction_count'] = count($transaction->get_all());
         $this->data['total_sales'] = $total;
         $this->data['profit'] = $profit;

@@ -1,21 +1,27 @@
 
-
-
 if (window.location.href === 'http://pos.project:8080/transactions/page') {
     $(function () {
         var user_id = $('#user_id');
         var item_id;
         var quantity_item;
         const items = $('#items');
-        const quanitiy = $('#quantity');
+        const quantity = $('#quantity');
         const price = $('#price');
         const addItem = $('#add-item');
         const table = $('tbody');
         const totalSalesElement = $('#total-sales');
         let totalSales = 0;
 
+        const a = document.getElementById('add-item');
 
+        function get_status() {
 
+            if (a.hasAttribute('disabled')) {
+                a.innerHTML = "disabled"
+            } else {
+                a.innerHTML = "Add"
+            }
+        }
 
         //! get all transactions today  and delete transactions
         $.ajax({
@@ -101,11 +107,33 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                         "value": $("#quantity").val(),        // substitute your own         // values (or variables) here
                     });
 
+
                     $('#quantity').change(function () {
-                        quantity_item = $('#quantity').val(),
+                        quantity_item = $('#quantity').val();
+                        if (quantity_item > response.body.quantity) {
+                            addItem.attr({
+                                "disabled": true
+                            })
+                            get_status()
+                            swal({
+                                title: 'The item input is more than quantity in the stock',
+                                text: 'Redirecting...',
+                                icon: 'warning',
+                                timer: 2000,
+                                buttons: false,
+                            });
+                        } else {
+
                             $("#price").attr({
                                 "value": response.body.price * $('#quantity').val(),        // substitute your own         // values (or variables) here
                             });
+
+                            get_status()
+                            addItem.attr({
+                                "disabled": false
+                            })
+
+                        }
                     });
                 },
             });

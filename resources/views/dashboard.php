@@ -29,7 +29,7 @@ use Core\Helpers\Helper; ?>
 
                             <i class="icon-cog fa-solid fa-layer-group fa-2x mb-2 mt-3"></i>
 
-                            <p class="card-text paragrahp"><strong><?= $data->items_count ?></strong></p>
+                            <p class="card-text paragrahp"><strong><?= $data->items_count_all ?></strong></p>
 
                         </div>
                     </div>

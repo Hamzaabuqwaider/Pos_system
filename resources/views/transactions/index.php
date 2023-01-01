@@ -19,7 +19,7 @@
             <span class="input-group-text" id="addon-wrapping">Total</span>
             <input id="price" type="text" value="" class="form-control" aria-describedby="addon-wrapping" min="0">
         </div>
-        <button id="add-item" type="submit" class="btn btn-success">Add</button>
+        <button id="add-item" type="submit" class="btn btn-success"></button>
     </form>
 </div>
 <div id="dataTableContainer">

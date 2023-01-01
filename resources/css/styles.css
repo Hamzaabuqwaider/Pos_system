@@ -794,5 +794,9 @@ aside .side-inner .nav-menu ul li a:hover {
     background: #F5F5F5;
   }
 
+  #add-item[disabled] {
 
+    background-color: red;
+
+  }
 }

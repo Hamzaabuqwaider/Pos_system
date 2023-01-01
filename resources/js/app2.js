@@ -7,7 +7,6 @@ const active = document.querySelectorAll("ul li a").forEach((item) => {
     }
 });
 
-
 const add_title = () => {
     let title_page = document.createElement('title');
     title_page.textContent = `${document.location.pathname.slice(1).replace('/', ' ')}`;
@@ -16,6 +15,10 @@ const add_title = () => {
 
 
 add_title()
+
+
+document.getElementById('add-item').innerHTML = "Add";
+
 
 const one = document.getElementById('Card-1');
 const two = document.getElementById('Card-2');
