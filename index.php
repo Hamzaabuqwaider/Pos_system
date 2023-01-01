@@ -35,10 +35,6 @@ if (isset($_COOKIE['user_id']) && !isset($_SESSION['user'])) { // check if there
     );
 }
 
-// This code will run only at the first time of using the app.
-// Fake::is_first_time();
-// Fake::create_users(3);
-
 
 
 //! For web administrators

@@ -161,9 +161,11 @@ class Api_transaction extends Controller
             $item_result = $item->get_by_id($this->request_body['item_id']);
             if ($item_result->quantity == 0) {
                 throw new \Exception('The Item is empty!');
+                die;
             } else if ($transaction_arr['quantity'] > $item_result->quantity) {
                 $_SESSION['message'] = "The Item in Stock is . $item_result->quantity ";
                 $_SESSION['error_type'] = "error";
+                die;
             } else {
                 $transaction = new Transaction;
                 $transaction->create($transaction_arr);
@@ -231,8 +233,7 @@ class Api_transaction extends Controller
             $stmt->execute();
             $stmt->close();
 
-            // $sql = "UPDATE items SET quantity = $result WHERE id =$item_id";
-            // $item->connection->query($sql);
+
             $transaction = new Transaction();
             $transaction->delete($this->request_body['id']);
         } catch (\Exception $error) {

@@ -11,10 +11,9 @@ use Core\Model\User;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS System</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/css/styles.css">
+    <link rel="stylesheet" href="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
@@ -24,7 +23,7 @@ use Core\Model\User;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,900&family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/pos20.png">
+    <link rel="icon" type="image/x-icon" href="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/pos20.png">
 
 </head>
 
@@ -53,14 +52,9 @@ use Core\Model\User;
 
                     ?>
                     <div class="pe-3">
-                        <a href="/user/profile"><img src="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $user_info->img ?>" style="width: 45px; height: 45px;outline: 4px solid white;" class="rounded-circle" alt=""></a>
+                        <a href="/user/profile"><img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $user_info->img ?>" style="width: 45px; height: 45px;outline: 4px solid white;" class="rounded-circle" alt=""></a>
                     </div>
-
                 </ul>
-                <!-- 
-                <a href="/logout"><button class="btn btn-danger" type="button" data-mdb-ripple-color="dark">
-                        Logut
-                    </button></a> -->
             </div>
         </div>
     </nav>
