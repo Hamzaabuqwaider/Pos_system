@@ -110,6 +110,7 @@ class Items extends Controller
         $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
         $_POST['price'] =  \htmlspecialchars($_POST['price']);
         $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
+        $_POST['description'] =  \htmlspecialchars($_POST['description']);
 
         $result = self::check_empty();
         if ($result) {

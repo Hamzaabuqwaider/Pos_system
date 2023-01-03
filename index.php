@@ -5,7 +5,6 @@ use Core\Router;
 use Core\Model\User;
 use Core\Helpers\Fake;
 
-require_once 'vendor/autoload.php';
 
 error_reporting(E_ALL ^ E_NOTICE);
 

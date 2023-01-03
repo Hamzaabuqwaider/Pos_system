@@ -151,7 +151,6 @@ class Api_transaction extends Controller
                 'total' => $this->request_body['total']
             ];
 
-
             $quantity_order = $this->request_body['quantity'];
             $item = new Item();
             $item_result = $item->get_by_id($this->request_body['item_id']);
@@ -172,7 +171,6 @@ class Api_transaction extends Controller
                 $stmt1->bind_param('ii', $transactions->id, $this->request_body['user_id']);
                 $stmt1->execute();
                 $stmt1->close();
-
 
                 $item_current = $item_result->quantity - $quantity_order;
 

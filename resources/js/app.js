@@ -12,6 +12,8 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
         const totalSalesElement = $('#total-sales');
         let totalSales = 0;
 
+        document.getElementById('add-item').innerHTML = "Add";
+
         const a = document.getElementById('add-item');
 
         function get_status() {

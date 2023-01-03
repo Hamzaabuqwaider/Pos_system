@@ -50,7 +50,6 @@ class Model
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
-        // $result = $this->connection->query("SELECT * FROM $this->table WHERE id=$id");
         return $result->fetch_object();
     }
 
