@@ -17,7 +17,6 @@ const add_title = () => {
 add_title()
 
 
-document.getElementById('add-item').innerHTML = "Add";
 
 
 const one = document.getElementById('Card-1');

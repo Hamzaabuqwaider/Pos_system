@@ -130,10 +130,10 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                                 "value": response.body.price * $('#quantity').val(),        // substitute your own         // values (or variables) here
                             });
 
-                            get_status()
                             addItem.attr({
                                 "disabled": false
                             })
+                            get_status()
 
                         }
                     });
