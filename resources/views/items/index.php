@@ -32,8 +32,8 @@
                         <td>
                             <p class="fw-bold text-center mt-2"><?= !empty($item->description) ?  $item->description : '<span style="text-decoration: line-through; color:red;"> no desription  </span>'  ?></p>
                         </td>
-                        <td class="text-center"><span style="font-weight: bold;"> <?= $item->quantity ?></span></td>
-                        <td class="text-center">
+                        <td class="text-center test"><span style="font-weight: bold;"> <?= $item->quantity ?></span></td>
+                        <td class="text-center test">
                             <a href="./item?id=<?= $item->id; ?>" <i style="text-decoration: none; color:green;" class="fa-solid fa-check"></a></i>
                         </td>
                     </tr>

@@ -3,7 +3,7 @@
 use Core\Helpers\Helper; ?>
 <div class="row">
     <?php if (Helper::check_permission(['user:read'])) {  ?>
-        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4 ">
+        <div class="col-sm-9 col-lg-4 col-md-4 w-auto ps-2 mb-4 ">
             <a href="/users">
                 <div id="Card-1" class="card-1">
                     <div class="card-body">
@@ -19,7 +19,7 @@ use Core\Helpers\Helper; ?>
         </div>
 
 
-        <div class="  col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-4">
+        <div class="col-lg-4 col-md-4 w-auto ps-2 mb-4">
             <a href="/items">
                 <div id="Card-2" class="card-2">
                     <div class="card-body">
@@ -41,7 +41,7 @@ use Core\Helpers\Helper; ?>
 
 
 
-        <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
+        <div class="col-lg-4 col-md-4 w-auto  ps-2 mb-3">
             <a href="/transactions/page">
                 <div id="Card-3" class="card-4">
                     <div class="card-body">
@@ -58,7 +58,7 @@ use Core\Helpers\Helper; ?>
             </a>
         </div>
 
-        <div class="col-lg-3 col-md-6 col-xl-3 w-auto  ps-2 mb-3">
+        <div class="col-lg-4 col-md-4 w-auto  ps-2 mb-3">
             <a href="/accounts/page">
                 <div id="Card-4" class="card-5">
                     <div class="card-body">
@@ -74,7 +74,7 @@ use Core\Helpers\Helper; ?>
         </div>
 
 
-        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-2">
+        <div class="col-lg-4 col-md-4 w-auto ps-2 mb-2">
             <a href="">
                 <div id="Card-5" class="card-6">
                     <div class="card-body">
@@ -89,7 +89,7 @@ use Core\Helpers\Helper; ?>
             </a>
         </div>
 
-        <div class="col-lg-3 col-md-6 col-xl-3 w-auto ps-2 mb-2">
+        <div class="col-lg-4 col-md-4 w-auto ps-2 mb-2">
             <a href="">
                 <div id="Card-6" class="card-7">
                     <div class="card-body">
@@ -114,24 +114,24 @@ use Core\Helpers\Helper; ?>
 <!-- </div> -->
 
 
-<div class="row d-flex justify-content-center align-items-center mt-4">
-    <h1 class="d-flex justify-content-around mb-5">Top <?= $data->items_count ?> Items </h1>
+<div class="mt-4 table-flex">
+    <h1 class="text-center">Top <?= $data->items_count ?> Items </h1>
 
-    <table class="table align-middle mb-0 bg-white">
+    <table class="table align-middle mb-0 bg-white table-mobile">
         <thead>
             <tr>
-                <th class="text-center">#</th>
+                <th class="text-center test">#</th>
                 <th class="text-center">Title</th>
-                <th class="text-center">Cost</th>
+                <th class="text-center test">Cost</th>
                 <th class="text-center">Price</th>
-                <th class="text-center">Action</th>
+                <th class="text-center test">Action</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1; ?>
             <?php foreach ($data->items as $item) : ?>
                 <tr>
-                    <td>
+                    <td class="test">
                         <div class="d-flex align-items-center">
                             <div class="ms-3">
                                 <p class="text-muted mb-0"><?= $i++ ?></p>
@@ -141,11 +141,11 @@ use Core\Helpers\Helper; ?>
                     <td>
                         <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
                     </td>
-                    <td class="text-center">
+                    <td class="text-center test">
                         $<?= $item->cost ?>
                     </td>
                     <td class="text-center">$<?= $item->price ?></td>
-                    <td class="text-center">
+                    <td class="text-center test">
                         <a href="/item?id=<?= $item->id ?>"><i class="fa-solid fa-1x fa-eye"></i></a>
                     </td>
                 </tr>

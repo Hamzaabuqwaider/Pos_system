@@ -39,8 +39,8 @@ footer * {
   font-size: 35px;
 }
 
-.card-body {
-  max-height: 400px;
+.admin-mobile {
+  z-index: 100;
 }
 
 .admin-view #admin-area {
@@ -49,7 +49,7 @@ footer * {
 }
 
 .admin-area-content {
-  padding: 0px 114px;
+  padding: 0px 89px;
 }
 
 .admin-view .admin-links {
@@ -107,9 +107,7 @@ footer * {
   transform: scale(1.1, 1.1);
 }
 
-.height-card {
-  height: 305px;
-}
+
 
 .card-profile {
   box-shadow        : 2px 7px 9px -1px rgba(0, 0, 0, 0.75);
@@ -298,12 +296,10 @@ aside .side-inner .nav-menu ul li a:hover {
 }
 
 .form-holder {
-  display           : flex;
-  flex-direction    : column;
-  justify-content   : center;
-  align-items       : center;
-  text-align        : center;
-  /* min-height     : 100vh; */
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
 }
 
 .form-holder .form-content {
@@ -319,6 +315,7 @@ aside .side-inner .nav-menu ul li a:hover {
   -webkit-align-items    : center;
   align-items            : center;
   padding                : 60px;
+  z-index                : 0;
 }
 
 .form-content .form-items {
@@ -437,10 +434,11 @@ aside .side-inner .nav-menu ul li a:hover {
 }
 
 .card-y {
-  margin    : 5% 0%;
   background: -webkit-linear-gradient(to right, #334a5f, #d1d1d1);
   background: linear-gradient(to right, #949090, #5a5a5a);
   color     : rgb(27, 26, 26);
+  width     : 120px !important;
+
 }
 
 .card-x {
@@ -448,9 +446,10 @@ aside .side-inner .nav-menu ul li a:hover {
   padding: 6% 0%;
 }
 
-#userInputContainer>div {
-  width       : 30%;
-  margin-right: 1rem;
+#userInputContainer {
+  /* width       : 30%; */
+  /* margin-right: 1rem; */
+  display: flex;
 }
 
 .form_style {
@@ -466,10 +465,9 @@ aside .side-inner .nav-menu ul li a:hover {
   opacity      : 0.8;
 
   /* border               : 3px solid #fff; */
-  padding              : 10px;
+  padding              : 20px;
   display              : inline-block;
   width                : 100%;
-  min-width            : 540px;
   -webkit-border-radius: 10px;
   -moz-border-radius   : 10px;
   border-radius        : 10px;
@@ -499,7 +497,6 @@ aside .side-inner .nav-menu ul li a:hover {
   padding              : 40px;
   display              : inline-block;
   width                : 100%;
-  min-width            : 540px;
   -webkit-border-radius: 10px;
   -moz-border-radius   : 10px;
   border-radius        : 10px;
@@ -551,7 +548,6 @@ aside .side-inner .nav-menu ul li a:hover {
   overflow-y: scroll;
   height    : 400px;
   display   : block;
-  width     : 70%;
 }
 
 .card .card-body .text-muted1 {
@@ -747,56 +743,64 @@ aside .side-inner .nav-menu ul li a:hover {
     -o-transition     : all 0.5s ease;
     transition        : all 0.5s ease;
   }
+}
 
-  .testimonial-card .card-up {
-    height                 : 120px;
-    overflow               : hidden;
-    border-top-left-radius : 0.25rem;
-    border-top-right-radius: 0.25rem;
-  }
+.testimonial-card .card-up {
+  height                 : 120px;
+  overflow               : hidden;
+  border-top-left-radius : 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
 
-  .aqua-gradient {
-    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
-  }
+.aqua-gradient {
+  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+}
 
-  .testimonial-card .avatar {
-    width        : 120px;
-    margin-top   : -60px;
-    overflow     : hidden;
-    border       : 5px solid #fff;
-    border-radius: 50%;
-  }
+.testimonial-card .avatar {
+  width        : 120px;
+  margin-top   : -60px;
+  overflow     : hidden;
+  border       : 5px solid #fff;
+  border-radius: 50%;
+}
 
-  .active-5 {
-    color: red !important;
-  }
+.active-5 {
+  color: red !important;
+}
 
 
 
-  ::-webkit-scrollbar-track {
-    box-shadow   : inset 0 0 5px rgb(231, 27, 27);
-    border-radius: 10px;
-  }
+::-webkit-scrollbar-track {
+  box-shadow   : inset 0 0 5px rgb(231, 27, 27);
+  border-radius: 10px;
+}
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background   : rgb(24, 77, 70);
-    border-radius: 15px;
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background   : rgb(24, 77, 70);
+  border-radius: 15px;
+}
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #b30000;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
 
-  ::-webkit-scrollbar {
-    width     : 10px;
-    background: #F5F5F5;
-  }
+::-webkit-scrollbar {
+  width     : 10px;
+  background: #F5F5F5;
+}
 
-  #add-item[disabled] {
+#add-item[disabled] {
 
-    background-color: red;
+  background-color: red;
 
-  }
+}
+
+
+.section-profile {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-wrap      : wrap;
 }

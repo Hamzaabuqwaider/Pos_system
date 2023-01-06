@@ -1,25 +1,24 @@
 <div class="d-flex justify-content-between">
     <h1 style="font-family: 'Roboto', sans-serif;">Selling Page</h1>
-
 </div>
 <div class="form_style mb-4">
-    <form id="userInputContainer" class="my-4 d-flex justify-content-between ">
+    <form id="userInputContainer">
         <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
-        <div class="input-group flex-nowrap">
+        <div class="input-group div-padding">
             <span class="input-group-text" id="addon-wrapping">Items</span>
             <select id="items" class="form-select" aria-label="Default select example">
-                <option selected>Select One Of The Items ...</option>
+                <option selected>Select</option>
             </select>
         </div>
-        <div class="input-group flex-nowrap">
+        <div class="input-group div-padding ps-2">
             <span class="input-group-text" id="addon-wrapping">Quantity</span>
             <input id="quantity" value="" type="number" class=" form-control" aria-describedby="addon-wrapping" min="0">
         </div>
-        <div class="input-group flex-nowrap">
+        <div class="input-group div-padding ps-2">
             <span class="input-group-text" id="addon-wrapping">Total</span>
             <input id="price" type="text" value="" class="form-control" aria-describedby="addon-wrapping" min="0">
         </div>
-        <button id="add-item" type="submit" class="btn btn-success"></button>
+        <button id="add-item" type="submit" class="ms-2 btn btn-success div-padding-b"></button>
     </form>
 </div>
 <div id="dataTableContainer">

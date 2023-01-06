@@ -1,7 +1,7 @@
 <!-- use Core\Helpers\Helper; -->
 <div class="row d-flex justify-content-center align-items-center py-5">
-    <div class="card" style="width: 18rem; background:bottom">
-        <div class="card-body">
+    <div class="card card-mobile" style="width: 18rem; background:bottom">
+        <div class="card-body card-height">
             <p class="card-text card-text-x text-center"><strong style="font-size: 35px;"><?= $data->item->title ?></strong></p>
             <p class="card-text card-text-x">Cost : <strong>$<?= $data->item->cost ?></strong></p>
             <p class="card-text card-text-x">Price : <strong>$<?= $data->item->price ?></strong></p>
