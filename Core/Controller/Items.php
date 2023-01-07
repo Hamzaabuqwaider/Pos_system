@@ -105,6 +105,18 @@ class Items extends Controller
         }
 
         $item = new Item();
+        $items = $item->get_all();
+        $items_name_all = array();
+        foreach ($items as $item_name) {
+            array_push($items_name_all, $item_name->title);
+        }
+
+        if (in_array($_POST['title'], $items_name_all)) {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The item is already exist';
+            Helper::redirect('/items/create');
+            die;
+        }
         $_POST['user_id'] = $_SESSION['user']['user_id'];
         $_POST['title'] =  \htmlspecialchars($_POST['title']);
         $_POST['cost'] =  \htmlspecialchars($_POST['cost']);
