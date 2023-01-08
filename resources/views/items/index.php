@@ -1,5 +1,11 @@
 <h1 class="mb-5" style="font-family: 'Roboto', sans-serif;">Items Page</h1>
 <!-- <div class="container my-5"> -->
+<form action="/item/search" method="get">
+    <div class="search_user input-group w-50 m-auto mb-3">
+        <input type="text" class="form-control" placeholder="Search for a Item by title" aria-label="Recipient's username" aria-describedby="button-addon2" name="title">
+        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Sehrch</button>
+    </div>
+</form>
 <div class="d-flex justify-content-center align-items-center">
     <div id="scrol-table">
         <table class="table table-bordered tabel-shadow align-middle mb-0 bg-white">

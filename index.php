@@ -67,6 +67,7 @@ Router::post('/items/store', "items.store"); // Creates the items (PHP)
 Router::get('/items/edit', "items.edit"); // Display the edit form (HTML)
 Router::post('/items/update', "items.update"); // Updates the items (PHP)
 Router::get('/items/delete', "items.delete"); // Delete the item (PHP)
+Router::get('/item/search', "items.search"); // Delete the item (PHP)
 
 //! Route of api requests
 Router::post('/api/item', 'api_transaction.items_by_id');

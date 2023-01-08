@@ -29,10 +29,6 @@
                             <input onfocus="this.style.color='#000000'" class="form-control" type="text" name="username" value="<?= $data->user->username ?>" placeholder="Username" required>
 
                         </div>
-                        <div class="col-md-12">
-                            <input onfocus="this.style.color='#000000'" class="form-control" type="password" name="password" value="<?= $data->user->password ?>" placeholder="Current Password" required>
-
-                        </div>
 
                         <div class="col-md-12">
                             <input onfocus="this.style.color='#000000'" class="form-control" type="password" name="new-password" placeholder="New Password">

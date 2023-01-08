@@ -197,4 +197,36 @@ class Items extends Controller
         $_SESSION['message'] = 'Item Deleted';
         Helper::redirect('/items');
     }
+
+    public function search()
+    {
+        $this->permissions(['item:read']);
+        $name = $_GET['title'];
+        $item = new Item();
+        $all_items = $item->get_all();
+        $array_name = array();
+        foreach ($all_items as $item_title) {
+            array_push($array_name, $item_title->title);
+        }
+        $item_serach = $item->get_by_name($name);
+        $item_name_select = $item_serach->title;
+
+
+        if (in_array($item_name_select, $array_name)) {
+            $this->view = ('items.single');
+            $date = new \DateTime($item_serach->created_at);
+            $item_serach->created_at = $date->format('d/m/Y');
+            $this->data['item'] =  $item_serach;
+        } elseif ($name == "") {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'You must input the title name';
+            Helper::redirect('/items');
+            die;
+        } else {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'Item not Found';
+            Helper::redirect('/items');
+            die;
+        }
+    }
 }
