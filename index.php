@@ -3,7 +3,6 @@ session_start();
 
 use Core\Router;
 use Core\Model\User;
-use Core\Helpers\Fake;
 
 
 error_reporting(E_ALL ^ E_NOTICE);
@@ -87,6 +86,9 @@ Router::get('/accounts/page', 'accounts.index');
 Router::get('/account/edit', 'accounts.edit');
 Router::post('/account/update', 'accounts.update');
 Router::get('/account/delete', 'accounts.delete');
+
+
+
 
 //! Redirect All of routes to web Pages
 Router::redirect();

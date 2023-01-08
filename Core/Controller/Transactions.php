@@ -141,4 +141,6 @@ class Transactions extends Controller
         $_SESSION['error_type'] = "success";
         Helper::redirect('/transactions/page');
     }
+
+
 }
