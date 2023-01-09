@@ -17,6 +17,9 @@ spl_autoload_register(function ($class_name) {
         return;
     $class_name = str_replace("\\", '/', $class_name); // \\ = \
     $file_path = __DIR__ . "/" . $class_name . ".php";
+    if (!file_exists($file_path)) {
+        return false;
+    }
     require_once $file_path;
 });
 

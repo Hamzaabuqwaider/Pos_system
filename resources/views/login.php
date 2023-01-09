@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="wrapper">
+    <div class="wrapper-htu">
         <div class="title"><span>POS System</span></div>
         <form method="POST" action="/authenticate">
             <div class="row">
                 <i class="fas fa-user"></i>
-                <input type="text" name="username" placeholder=Username" required>
+                <input type="text" name="username" placeholder="Username" required>
             </div>
             <div class="row">
                 <i class="fas fa-lock"></i>
