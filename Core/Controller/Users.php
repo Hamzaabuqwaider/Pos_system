@@ -108,7 +108,10 @@ class Users extends Controller
                         die;
                 }
 
-
+                /**
+                 *! check if the user input email is exists in database 
+                 *! error This email already exists 
+                 */
                 $user = new User();
                 $users = $user->get_all();
                 $users_email = array();
