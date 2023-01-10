@@ -71,7 +71,7 @@ class Admin extends Controller
         $this->data['transaction_count'] = count($transaction->get_all());
         $this->data['total_sales'] = $total;
         $this->data['profit'] = $profit;
-
+        $this->data['item_quantity'] = $get_total_quantity;
 
         $this->data['items'] = $item->get_top_5();
         $this->data['items_count'] = count($item->get_top_5());

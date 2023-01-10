@@ -113,45 +113,82 @@ use Core\Helpers\Helper; ?>
 
 <!-- </div> -->
 
+<div class="table-style">
+    <div class="table-flex">
+        <h2 class="text-center">Top <?= $data->items_count ?> Items </h2>
 
-<div class="mt-4 table-flex">
-    <h1 class="text-center">Top <?= $data->items_count ?> Items </h1>
-
-    <table class="table align-middle mb-0 bg-white table-mobile">
-        <thead>
-            <tr>
-                <th class="text-center test">#</th>
-                <th class="text-center">Title</th>
-                <th class="text-center test">Cost</th>
-                <th class="text-center">Price</th>
-                <th class="text-center test">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1; ?>
-            <?php foreach ($data->items as $item) : ?>
+        <table class="table align-middle bg-white table-mobile">
+            <thead>
                 <tr>
-                    <td class="test">
-                        <div class="d-flex align-items-center">
-                            <div class="ms-3">
-                                <p class="text-muted mb-0"><?= $i++ ?></p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
-                    </td>
-                    <td class="text-center test">
-                        $<?= $item->cost ?>
-                    </td>
-                    <td class="text-center">$<?= $item->price ?></td>
-                    <td class="text-center test">
-                        <a href="/item?id=<?= $item->id ?>"><i class="fa-solid fa-1x fa-eye"></i></a>
-                    </td>
+                    <th class="text-center test">#</th>
+                    <th class="text-center">Title</th>
+                    <th class="text-center test">Cost</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center test">Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($data->items as $item) : ?>
+                    <tr>
+                        <td class="test">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <p class="text-muted mb-0"><?= $i++ ?></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
+                        </td>
+                        <td class="text-center test">
+                            $<?= $item->cost ?>
+                        </td>
+                        <td class="text-center">$<?= $item->price ?></td>
+                        <td class="text-center test">
+                            <a href="/item?id=<?= $item->id ?>"><i class="fa-solid fa-1x fa-eye"></i></a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="mt-4 table-flex">
+        <h3 class="text-center">Total quantity for each Items </h3>
+        <div id="scrol-table">
+            <table class="table align-middle mb-0 bg-white table-mobile">
+                <thead>
+                    <tr>
+                        <th class="text-center test">#</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center test">quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data->item_quantity as $item) : ?>
+                        <tr>
+                            <td class="test">
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                        <p class="text-muted mb-0"><?= $i++ ?></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
+                            </td>
+                            <td class="text-center test">
+                                <?= $item->quantity ?>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <?php } else {
 

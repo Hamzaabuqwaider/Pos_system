@@ -7,7 +7,7 @@
         <div class="input-group div-padding">
             <span class="input-group-text" id="addon-wrapping">Items</span>
             <select id="items" class="form-select" aria-label="Default select example">
-                <option selected>Select</option>
+                <option selected>Select item name</option>
             </select>
         </div>
         <div class="input-group div-padding ps-2">
