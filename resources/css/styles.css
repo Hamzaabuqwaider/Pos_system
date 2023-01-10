@@ -505,11 +505,16 @@ aside .side-inner .nav-menu ul li a:hover {
   transition           : all 0.4s ease;
 }
 
+.table {
+  margin-bottom: unset !important;
+}
+
+
+
 .table-style {
   display        : flex;
   justify-content: space-around;
-  align-items    : center;
-  margin-top     : 76px;
+  align-items    : stretch;
   flex-wrap      : wrap;
 }
 
@@ -559,8 +564,8 @@ aside .side-inner .nav-menu ul li a:hover {
 }
 
 .card .card-body .text-muted1 {
-  color      : white;
-  font-weight: bold;
+  color         : white;
+  /* font-weight: bold; */
 }
 
 .card .fas,

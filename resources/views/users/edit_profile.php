@@ -24,31 +24,24 @@
             <div class="card card-profile opac mb-4">
                 <div class="card-body">
                     <div class="">
-                        <p class="mb-1">Name :</p>
+                        <p class="mb-1" style="color:red ;font-weight:bold">Name :</p>
                         <input type="text" class="form-control" name="display_name" value="<?= $data->info->display_name ?>">
                     </div>
 
                     <hr>
                     <div class="">
-                        <p class="mb-1">Username :</p>
+                        <p class="mb-1" style="color:red ;font-weight:bold">Username :</p>
                         <input type="text" class="form-control" name="username" value="<?= $data->info->username ?>">
                     </div>
 
                     <hr>
                     <div class="">
-                        <p class="mb-1">Email :</p>
+                        <p class="mb-1" style="color:red ;font-weight:bold">Email :</p>
                         <input type="text" class="form-control" name="email" value="<?= $data->info->email ?>">
                     </div>
-
                     <hr>
                     <div class="">
-                        <p class="mb-1">Current Password :</p>
-                        <input type="password" class="form-control" name="password" value="<?= $data->info->password ?>">
-                    </div>
-
-                    <hr>
-                    <div class="">
-                        <p class="mb-1">New Password :</p>
+                        <p class="mb-1" style="color:red ;font-weight:bold">New Password :</p>
                         <input type="password" class="form-control" name="new-password">
                     </div>
 

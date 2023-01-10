@@ -57,6 +57,21 @@
 }
 
 
+@media (max-width:1517px) {
+    .img {
+        max-height       : 100%;
+        min-width        : 100%;
+        background-image : url(../Images/imagelogin.png);
+        background-repeat: no-repeat;
+        background-size  : 100% 100%;
+        position         : absolute;
+        right            : 0;
+        left             : 0;
+        bottom           : 0;
+        top              : 0;
+    }
+}
+
 
 
 @media (max-width:400px) {
@@ -218,6 +233,17 @@
 
 }
 
+@media (max-width:588px) {
+    .table-flex {
+        overflow-x: scroll !important;
+    }
+}
+
+@media (max-width:485px) {
+    .table-flex2 {
+        overflow-x: scroll !important;
+    }
+}
 
 
 @media (max-width:878px) {
@@ -225,9 +251,6 @@
         overflow-x: scroll;
     }
 
-    .table-flex {
-        overflow-x: scroll !important;
-    }
 }
 
 

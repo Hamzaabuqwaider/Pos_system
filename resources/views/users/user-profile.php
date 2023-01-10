@@ -15,38 +15,38 @@
             <div class="card card-profile height-card mb-4">
                 <div class="card-body">
                     <div class="col-sm-3">
-                        <p class="mb-0">Name</p>
+                        <p class="mb-0" style="color:red ;font-weight:bold">Name </p>
                     </div>
                     <div class="col-sm-9">
                         <p class="text-muted1 mb-0"><?= $data->info->display_name ?></p>
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                        <p class="mb-0">Username</p>
+                        <p class="mb-0" style="color:red ;font-weight:bold">Username</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text-muted1 mb-0" style="font-weight: bold;"><?= $data->info->username ?></p>
+                        <p class="text-muted1 mb-0"><?= $data->info->username ?></p>
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                        <p class="mb-0">Email</p>
+                        <p class="mb-0" style="color:red ;font-weight:bold">Email</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text-muted1 mb-0" style="font-weight: bold;"><?= $data->info->email ?></p>
+                        <p class="text-muted1 mb-0"><?= $data->info->email ?></p>
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                        <p class="mb-0">Created At</p>
+                        <p class="mb-0" style="color:red ;font-weight:bold">Created At</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text-muted1 mb-0" style="font-weight: bold;"><?= $data->info->created_at ?></p>
+                        <p class="text-muted1 mb-0"><?= $data->info->created_at ?></p>
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                        <p class="mb-0">Updated At</p>
+                        <p class="mb-0" style="color:red ;font-weight:bold">Updated At</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text-muted1 mb-0" style="font-weight: bold; color:white;"><?= $data->info->updated_at ?></p>
+                        <p class="text-muted1 mb-0"><?= $data->info->updated_at ?></p>
                     </div>
                 </div>
             </div>

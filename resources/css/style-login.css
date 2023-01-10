@@ -7,19 +7,24 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
+.img {
     /* background: #1abc9c; */
-    background-image       : url(../Images/business-buy-card-commercial-wallpaper-preview.jpg);
-    background-repeat      : no-repeat;
-    background-size        : cover;
-    background-position    : center;
-    /* height              : 76vh; */
-    /* overflow            : hidden; */
+    background-image   : url(../Images/business-buy-card-commercial-wallpaper-preview.jpg);
+    background-repeat  : no-repeat;
+    background-size    : cover;
+    background-position: center;
+    position           : absolute;
+    right              : 0;
+    left               : 0;
+    bottom             : 0;
+    top                : 0;
 }
 
-/* ::selection {
+
+
+::selection {
     background: rgba(26, 188, 156, 0.3);
-} */
+}
 
 .container {
     max-width: 440px;
