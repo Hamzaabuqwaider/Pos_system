@@ -117,8 +117,6 @@ class Authentication extends Controller
 
     private function invalid_redirect($msg)
     {
-        // $_SESSION['error_type'] = "Invalid Username or Password";
-        // $_SESSION['perm'] = "You don't have Access to the site";
         $_SESSION['message'] = $msg;
         Helper::redirect('/login');
         die;

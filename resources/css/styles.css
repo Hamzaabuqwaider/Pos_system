@@ -53,11 +53,9 @@ footer * {
 }
 
 .admin-view .admin-links {
-  background     : #0c0f11;
-  opacity        : 0.9;
-  /* background  : -webkit-linear-gradient(to right, #1f374e, #d1d1d1);
-    background   : linear-gradient(to right, #001c3f, #292929); */
-  overflow-x     : hidden;
+  background: #0c0f11;
+  opacity   : 0.9;
+  overflow-x: hidden;
 }
 
 .card-text-x {
