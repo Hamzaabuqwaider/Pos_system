@@ -115,8 +115,8 @@ use Core\Helpers\Helper; ?>
 
 <div class="table-style">
     <div class="table-flex mb-3">
-        <h2 class="text-center">Top <?= $data->items_count ?> Items </h2>
-        <table class="table bg-white table-mobile">
+        <h2 class="text-center mt-4">Top <?= $data->items_count ?> Items </h2>
+        <table class="table table-bordered bg-white table-mobile">
             <thead>
                 <tr>
                     <th class="text-center test">#</th>
@@ -132,13 +132,16 @@ use Core\Helpers\Helper; ?>
                     <tr>
                         <td class="test">
                             <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <p class="text-muted mb-0"><?= $i++ ?></p>
-                                </div>
+                                <p class="text-muted mb-0"><?= $i++ ?></p>
                             </div>
                         </td>
                         <td>
-                            <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/images_item/<?= $item->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
+                                </div>
+                            </div>
                         </td>
                         <td class="text-center test">
                             $<?= $item->cost ?>
@@ -153,9 +156,9 @@ use Core\Helpers\Helper; ?>
         </table>
     </div>
     <div class="table-flex2">
-        <h3 class="text-center">Total quantity for each Items </h3>
+        <h3 class="text-center mt-4">Total quantity for each Items </h3>
 
-        <table class="table align-middle mb-0 bg-white table-mobile">
+        <table class="table table-bordered align-middle mb-0 bg-white table-mobile">
             <thead>
                 <tr>
                     <th class="text-center test">#</th>
@@ -174,8 +177,13 @@ use Core\Helpers\Helper; ?>
                                 </div>
                             </div>
                         </td>
-                        <td>
-                            <p class="text-muted mb-0 text-center" style="font-weight: bold;"><?= $item->title ?></p>
+                        <td class="text-center">
+                            <div class="d-flex align-items-center">
+                                <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/images_item/<?= $item->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
+                                </div>
+                            </div>
                         </td>
                         <td class="text-center test">
                             <?= $item->quantity ?>

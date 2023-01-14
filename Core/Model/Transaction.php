@@ -53,7 +53,7 @@ class Transaction extends Model
 
     public function get_by_id_title($id)
     {
-        $stmt = $this->connection->prepare("SELECT transactions.*,items.title as title_name FROM transactions JOIN items ON transactions.item_id=items.id WHERE transactions.id=?");
+        $stmt = $this->connection->prepare("SELECT transactions.*,items.title as title_name,items.img as img_item FROM transactions JOIN items ON transactions.item_id=items.id WHERE transactions.id=?");
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();

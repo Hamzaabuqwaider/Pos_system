@@ -7,6 +7,7 @@
                 <tr>
                     <th class="ps-4 text-center">Name</th>
                     <th class="text-center">Username</th>
+                    <th class="text-center">Status</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Action</th>
                 </tr>
@@ -26,6 +27,18 @@
                         <td>
                             <p class="fw-bold text-center"><?= $user->username ?></p>
                         </td>
+                        <td>
+                            <?php if ($user->status == "Online") { ?>
+                                <p class="fw-bold text-center" style="color:green"><?= $user->status ?><i class="fa-solid fa-power-off"></i>
+                                </p>
+
+                            <?php } else { ?>
+                                <p class="fw-bold text-center" style="color:red;"><?= $user->status ?>
+                                    <i class="fa-solid fa-power-off"></i>
+                                </p>
+                            <?php } ?>
+                        </td>
+
                         <td>
                             <p class="fw-bold text-center"><?= $user->email ?></p>
                         </td>

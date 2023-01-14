@@ -4,7 +4,7 @@
             <div class="form-content">
                 <div class="form-items">
                     <h2 class="text-center" style="font-family: monospace;">Create Item</h2>
-                    <form action="/items/store" method="POST">
+                    <form action="/items/store" method="POST" enctype="multipart/form-data">
 
                         <?php
                         if (!empty($_SESSION) && isset($_SESSION['errors']) && !empty($_SESSION['errors'])) : ?>
@@ -31,7 +31,9 @@
                         </div>
                         <div class="col-md-12 mt-3">
                             <input style="color: #C0C0C0;" onfocus="this.style.color='#000000'" class="form-control" type="number" name="quantity" placeholder="Quantity" required>
-
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <input type="file" id="uplode-img-edit" class="form-control" name="img" style="background-color: #ddd;">
                         </div>
 
                         <div class="col-md-12 mt-3">

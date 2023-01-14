@@ -25,13 +25,18 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center justify-content-center">
-                                <div class="ms-3">
+                                <div class="ms-1">
                                     <p class="fw-bold mb-1"><?= $i++ ?></p>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/images_item/<?= $item->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
+                                </div>
+                            </div>
                         </td>
 
                         <td class="text-center pt-2"><span style="font-weight: bold;">$<?= $item->price ?></span></td>

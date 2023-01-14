@@ -83,6 +83,10 @@ class Authentication extends Controller
         //*extract all permissions from database to user logged
         $permissions = \unserialize($logged_in_user->permissions);
 
+        //! Update in databse if user login and update the value status of Online
+        $id = $_SESSION['user']['user_id'];
+        $sql = "UPDATE users SET status = 'Online' WHERE id = $id";
+        $user->connection->query($sql);
 
 
         //*check whether these permissions are available to the user to transfer him to the appropriate page
@@ -109,6 +113,12 @@ class Authentication extends Controller
 
     public function logout()
     {
+        //! Update in databse if user login and update the value status of Offline
+
+        $user = new User();
+        $id = $_SESSION['user']['user_id'];
+        $sql = "UPDATE users SET status = 'Offline',loggout_user = now() WHERE id = $id";
+        $user->connection->query($sql);
         \session_destroy();
         \session_unset();
         \setcookie('user_id', '', time() - 3600); // destroy the cookie by setting a past expiry date

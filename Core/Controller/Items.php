@@ -111,6 +111,10 @@ class Items extends Controller
             array_push($items_name_all, $item_name->title);
         }
 
+
+
+
+
         if (in_array($_POST['title'], $items_name_all)) {
             $_SESSION['error_type'] = "error";
             $_SESSION['message'] = 'The item is already exist';
@@ -123,6 +127,10 @@ class Items extends Controller
         $_POST['price'] =  \htmlspecialchars($_POST['price']);
         $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
         $_POST['description'] =  \htmlspecialchars($_POST['description']);
+        $targetDir =  "./resources/images_item/";
+        $fileName = basename($_FILES["img"]["name"]);
+        move_uploaded_file($_FILES['img']['tmp_name'],  $targetDir . $fileName);
+        $_POST['img'] = $fileName;
 
         $result = self::check_empty();
         if ($result) {
