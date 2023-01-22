@@ -36,14 +36,33 @@ class Authentication extends Controller
 
     /**
      * Login Validation
-     *
+     *! validation from input username and pssword
+     *! check if the username is empty
+     *! check if the password is empty
+     *! check if the username or paswsord is correct
      * @return void
      */
+
+
     public function validate()
     {
         // if user doesn't exists, do not authenticate
         $user = new User();
+
+        if (empty($_POST['username'])) {
+            $this->invalid_redirect("The username is required");
+            $_SESSION['error_type'] = "error";
+            die;
+        }
+
+        if (empty($_POST['password'])) {
+            $this->invalid_redirect("The password is required");
+            $_SESSION['error_type'] = "error";
+            die;
+        }
+
         $logged_in_user = $user->check_username(\htmlspecialchars($_POST['username']));
+
 
         if (!$logged_in_user) {
             $this->invalid_redirect("Invalid Username or Password");

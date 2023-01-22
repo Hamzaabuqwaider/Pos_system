@@ -89,19 +89,30 @@ class Items extends Controller
 
 
         if (empty($_POST['title'])) {
-
-            echo 'title_not_found';
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The title is required';
+            Helper::redirect('/items/create');
+            die;
         }
 
         if (empty($_POST['cost'])) {
-            echo 'cost_not_found';
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The cost is required';
+            Helper::redirect('/items/create');
+            die;
         }
 
         if (empty($_POST['price'])) {
-            echo 'price_not_found';
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The price is required';
+            Helper::redirect('/items/create');
+            die;
         }
         if (empty($_POST['quantity'])) {
-            echo 'quantity_not_found';
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The quantity is required';
+            Helper::redirect('/items/create');
+            die;
         }
 
         $item = new Item();
@@ -182,6 +193,29 @@ class Items extends Controller
         $_POST['price'] =  \htmlspecialchars($_POST['price']);
         $_POST['quantity'] =  \htmlspecialchars($_POST['quantity']);
         $_POST['description'] =  \htmlspecialchars($_POST['description']);
+
+
+        if (empty($_POST['title'])) {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The title can not be empty';
+            Helper::redirect('edit?id=' . $_POST['id']);
+            die;
+        } elseif (empty($_POST['cost'])) {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The cost can not be empty';
+            Helper::redirect('edit?id=' . $_POST['id']);
+            die;
+        } elseif (empty($_POST['price'])) {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The price can not be empty';
+            Helper::redirect('edit?id=' . $_POST['id']);
+            die;
+        } elseif (empty($_POST['quantity'])) {
+            $_SESSION['error_type'] = "error";
+            $_SESSION['message'] = 'The quantity can not be empty';
+            Helper::redirect('edit?id=' . $_POST['id']);
+            die;
+        }
         $item->update($_POST);
         $_SESSION['error_type'] = "success";
         $_SESSION['message'] = 'Item Updated';

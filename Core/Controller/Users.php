@@ -91,7 +91,6 @@ class Users extends Controller
                         $_SESSION['message'] = "The display is required";
                         $_SESSION['error_type'] = "error";
                         Helper::redirect('/users/create');
-
                         die;
                 }
 
@@ -214,11 +213,31 @@ class Users extends Controller
                                 $permissions = User::ACCOUNT;
                                 break;
                 }
+
                 unset($_POST['role']);
                 $_POST['permissions'] = \serialize($permissions);
                 $password_new = empty($_POST['new-password']) ? NULL : \password_hash($_POST['new-password'], \PASSWORD_DEFAULT);
                 $_POST['password'] = empty($_POST['new-password']) ? $user_info->password : $password_new;
                 unset($_POST['new-password']);
+
+                if (empty($_POST['display_name'])) {
+                        $_SESSION['error_type'] = "error";
+                        $_SESSION['message'] = 'The display_name can not be empty';
+                        Helper::redirect('edit?id=' . $_POST['id']);
+                        die;
+                } elseif (empty($_POST['username'])) {
+                        $_SESSION['error_type'] = "error";
+                        $_SESSION['message'] = 'The username can not be empty';
+                        Helper::redirect('edit?id=' . $_POST['id']);
+                        die;
+                } elseif (empty($_POST['email'])) {
+                        $_SESSION['error_type'] = "error";
+                        $_SESSION['message'] = 'The email can not be empty';
+                        Helper::redirect('edit?id=' . $_POST['id']);
+                        die;
+                }
+
+
                 $user->update($_POST);
                 $_SESSION['error_type'] = "success";
                 $_SESSION['message'] = 'user updated';

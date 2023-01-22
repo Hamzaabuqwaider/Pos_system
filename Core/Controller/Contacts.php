@@ -35,7 +35,7 @@ class Contacts extends Controller
         $this->view = 'contacts.index';
         $replay = new Replay_contact();
         $id = $_SESSION['user']['user_id'];
-        $this->data['contacts_replay_all'] = $replay->contact_replay(8);
+        $this->data['contacts_replay_all'] = $replay->contact_replay($id);
     }
 
     public function store()

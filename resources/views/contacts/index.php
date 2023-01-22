@@ -4,7 +4,7 @@ use Core\Model\Contact;
 use Core\Model\User; ?>
 <div class="d-flex justify-content-center align-items-center flex-wrap">
     <?php if (!empty($data->contacts_replay_all)) { ?>
-        <div class="ms-3 w-50">
+        <div class="ms-3 w-50" id="scrol-table">
             <table class="table table-bordered tabel-shadow align-middle mb-0 bg-white">
                 <thead>
                     <tr>
@@ -37,7 +37,7 @@ use Core\Model\User; ?>
           </div>';
     }
     ?>
-    <div class="ms-3">
+    <div class="ms-3 mt-3">
         <div class="card card-profile height-card mb-4">
             <form class="card-body" method="post" action="/contact/store">
                 <input type="hidden" value="<?= $_SESSION['user']['user_id']; ?>" name="user_id">
@@ -57,7 +57,7 @@ use Core\Model\User; ?>
                 </div>
 
                 <div class="col-sm-3 mt-2">
-                    <button type="submit" class="btn btn-success">Primary</button>
+                    <button type="submit" class="btn btn-success">Send</button>
                 </div>
             </form>
         </div>

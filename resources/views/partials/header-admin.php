@@ -132,6 +132,15 @@ use Core\Model\User;
                         <li class="pb-2"><a href="/accounts/page"><i class="fa-solid fa-file-invoice-dollar pe-4"></i></a></li>
                     <?php endif; ?>
 
+                    <?php if (Helper::check_permission(['user:read'])) : ?>
+
+                        <li class="pb-2"><a href="/list/message"><i class="fa-solid fa-envelope pe-4"></i></a></li>
+                    <?php endif; ?>
+                    <?php if (!(Helper::check_permission(['user:read']))) : ?>
+
+                        <li class="pb-2"><a href="/contact/page"><i class="fa-solid fa-pen-nib pe-4"></i></a></li>
+                    <?php endif; ?>
+
                     <li class="pb-2 mt-4"><a href="/logout"><i class="fa-solid fa-right-from-bracket pe-4"></i></a></li>
 
                 </ul>
