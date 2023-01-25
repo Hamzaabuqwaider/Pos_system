@@ -5,10 +5,11 @@ namespace Core\Controller;
 use Exception;
 use Core\Model\Item;
 use Core\Helpers\Tests;
+use Core\Model\Contact;
+use Core\Helpers\Helper;
 use Core\Base\Controller;
 use Core\Model\Transaction;
 use Core\Controller\Transactions;
-use Core\Helpers\Helper;
 
 class Api_transaction extends Controller
 {
@@ -234,5 +235,16 @@ class Api_transaction extends Controller
             $this->response_schema['success'] = false;
             $this->response_schema['message_code'] = $error->getMessage();
         }
+    }
+
+
+    public function list()
+    {
+        $contact = new Contact;
+        $contacts = $contact->get_all();
+        $this->response_schema['body'] = $contacts;
+        $this->response_schema['message_code'] = "contacts_collected_successfuly";
+
+        // $this->data['contacts_count'] = count($contact->get_all());
     }
 }

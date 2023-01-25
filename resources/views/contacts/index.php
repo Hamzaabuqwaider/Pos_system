@@ -4,7 +4,7 @@ use Core\Model\Contact;
 use Core\Model\User; ?>
 <div class="d-flex justify-content-center align-items-center flex-wrap">
     <?php if (!empty($data->contacts_replay_all)) { ?>
-        <div class="ms-3 w-50" id="scrol-table">
+        <div class="ms-3 w-50">
             <table class="table table-bordered tabel-shadow align-middle mb-0 bg-white">
                 <thead>
                     <tr>

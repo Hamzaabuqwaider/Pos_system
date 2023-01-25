@@ -20,27 +20,27 @@
                             <div class="d-flex align-items-center">
                                 <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $user->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                                 <div class="ms-3">
-                                    <p class="fw-bold text-center"><?= $user->display_name ?></p>
+                                    <p class="fw-bold text-center p-contact"><?= $user->display_name ?></p>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <p class="fw-bold text-center"><?= $user->username ?></p>
+                            <p class="fw-bold text-center p-contact"><?= $user->username ?></p>
                         </td>
                         <td>
                             <?php if ($user->status == "Online") { ?>
-                                <p class="fw-bold text-center" style="color:green"><?= $user->status ?><i class="fa-solid fa-power-off"></i>
+                                <p class="fw-bold text-center p-contact" style="color:green"><?= $user->status ?><i class="fa-solid fa-power-off"></i>
                                 </p>
 
                             <?php } else { ?>
-                                <p class="fw-bold text-center" style="color:red;"><?= $user->status ?>
+                                <p class="fw-bold text-center p-contact" style="color:red;"><?= $user->status ?>
                                     <i class="fa-solid fa-power-off"></i>
                                 </p>
                             <?php } ?>
                         </td>
 
                         <td>
-                            <p class="fw-bold text-center"><?= $user->email ?></p>
+                            <p class="fw-bold text-center p-contact"><?= $user->email ?></p>
                         </td>
                         <td class="text-center">
                             <a href="./user?id=<?= $user->id ?>" <i style="text-decoration: none;" class="fa-solid fa-check"></i></a>

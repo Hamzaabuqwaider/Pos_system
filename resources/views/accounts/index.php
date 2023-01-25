@@ -25,18 +25,18 @@
                             <div class="d-flex align-items-center">
                                 <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/Images/<?= $transaction->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                                 <div class="ms-3">
-                                    <p class="fw-bold mb-1"><?= $transaction->display_name ?></p>
+                                    <p class="fw-bold mb-1 p-contact"><?= $transaction->display_name ?></p>
                                 </div>
                             </div>
                         </td>
-                        <td>
+                        <td class="p-contact">
                             <?= $transaction->title ?>
                         </td>
-                        <td class="ps-4">
+                        <td class="ps-4 p-contact">
                             <?= $transaction->quantity ?>
 
                         </td>
-                        <td>$<?= $transaction->total ?></td>
+                        <td class="p-contact">$<?= $transaction->total ?></td>
                         <td>
                             <?php $date = new \DateTime($transaction->created_at);
                             $transaction->created_at = $date->format('d/m/Y');

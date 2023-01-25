@@ -1,4 +1,12 @@
 @media (max-width:1267px) {
+
+    .test1 {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        margin-top     : 1rem;
+    }
+
     .admin-mobile {
         display: block !important;
     }
@@ -108,6 +116,11 @@
     .admin-area-content p {
         font-size: 30px;
     }
+
+    .admin-area-content .p-contact {
+        font-size: 18px;
+    }
+
 
     .admin-area-content .card-4 p strong {
         font-size: 23px;
@@ -240,6 +253,11 @@
 }
 
 @media (max-width:485px) {
+
+    .card {
+        min-width: 124%;
+    }
+
     .table-flex2 {
         overflow-x: scroll !important;
     }

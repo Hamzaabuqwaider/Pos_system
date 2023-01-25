@@ -16,7 +16,7 @@
                     <th class="text-center">Price</th>
                     <th class="text-center">Description</th>
                     <th class="text-center">Quantity</th>
-                    <th class="text-center">Action</th>
+                    <th class="text-center action">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +26,7 @@
                         <td>
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="ms-1">
-                                    <p class="fw-bold mb-1"><?= $i++ ?></p>
+                                    <p class="fw-bold mb-1 p-contact"><?= $i++ ?></p>
                                 </div>
                             </div>
                         </td>
@@ -34,16 +34,16 @@
                             <div class="d-flex align-items-center">
                                 <img src="<?= $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] ?>/resources/images_item/<?= $item->img ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                                 <div class="ms-3">
-                                    <p class="fw-bold text-center mt-2"><?= $item->title ?></p>
+                                    <p class="fw-bold text-center mt-2 p-contact"><?= $item->title ?></p>
                                 </div>
                             </div>
                         </td>
 
                         <td class="text-center pt-2"><span style="font-weight: bold;">$<?= $item->price ?></span></td>
                         <td>
-                            <p class="fw-bold text-center mt-2"><?= !empty($item->description) ?  $item->description : '<span style="text-decoration: line-through; color:red;"> no desription  </span>'  ?></p>
+                            <p class="fw-bold text-center mt-2 p-contact"><?= !empty($item->description) ?  $item->description : '<span style="text-decoration: line-through; color:red;"> no desription  </span>'  ?></p>
                         </td>
-                        <td class="text-center test"><span style="font-weight: bold;"> <?= $item->quantity ?></span></td>
+                        <td class="text-center"><span style="font-weight: bold;"> <?= $item->quantity ?></span></td>
                         <td class="text-center test">
                             <a href="./item?id=<?= $item->id; ?>" <i style="text-decoration: none; color:green;" class="fa-solid fa-check"></a></i>
                         </td>

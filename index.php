@@ -99,6 +99,7 @@ Router::post('/contact/store', 'contacts.store');
 //! Route admin message
 
 Router::get('/list/message', 'contacts.list');
+Router::get('/list/contactapi', 'api_transaction.list');
 Router::get('/delete/message', 'contacts.delete');
 Router::get('/message/replay', 'contacts.replay'); // get contacts message to admin
 Router::post('/message/rereplay', 'contacts.rereplay'); // replay message to user contact

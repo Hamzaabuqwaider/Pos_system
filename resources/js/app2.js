@@ -1,4 +1,48 @@
 "use strict";
+
+
+// append(`
+//                 <option id = "${id_data++}" value = ${element.id}> ${element.title}</option>
+//                 `);
+//! fetch all contacts and show in the tabel
+
+$.ajax({
+    type: "get",
+    url: "http://pos.project:8080/list/contactapi",
+    success: function (response) {
+        var id_data = 1;
+        response.body.forEach(element => {
+
+            $('#contacts-message').append(`
+            <tr>
+            <td>
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="ms-1">
+                        <p class="fw-bold mb-1 p-contact">${id_data++}</p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                        <p class="fw-bold text-center mt-2 p-contact">${element.Email}</p>
+                    </div>
+                </div>
+            </td>
+
+            <td class="text-center pt-2"><span style="font-weight: bold;">${element.message_contact}</span></td>
+
+            <td class="text-center test1">
+                <a href="/message/replay?id=${element.id}&user_contact=${element.user_id}" <i style="text-decoration: none; color:green;" class="fa-solid fa-reply pe-3"></a></i>
+                <a href="/delete/message?id=${element.id}" <i style="text-decoration: none; color:red;" class="fa-solid fa-trash"></a></i>
+            </td>
+        </tr>
+            `);
+        });
+    }
+});
+
+
 const link = window.location.href;
 const active = document.querySelectorAll("ul li a").forEach((item) => {
     if (item.href == link) {

@@ -214,7 +214,7 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                     },
                     error: function (e) {
                         swal({
-                            title: 'The Item is Empty',
+                            title: 'You must select the item name or input quantity',
                             text: 'Redirecting...',
                             icon: 'error',
                             timer: 2000,
