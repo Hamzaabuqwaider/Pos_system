@@ -140,7 +140,6 @@ class Transactions extends Controller
         $_SESSION['message'] = "The Transaction is updated";
         $_SESSION['error_type'] = "success";
         Helper::redirect('/transactions/page');
+        die;
     }
-
-
 }

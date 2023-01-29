@@ -250,12 +250,10 @@ class Items extends Controller
         foreach ($all_items as $item_title) {
             array_push($array_name, $item_title->title);
         }
-        $item_serach = $item->get_by_name($name);
-        $item_name_select = $item_serach->title;
 
-
-        if (in_array($item_name_select, $array_name)) {
+        if (in_array($name, $array_name)) {
             $this->view = ('items.single');
+            $item_serach = $item->get_by_name($name);
             $date = new \DateTime($item_serach->created_at);
             $item_serach->created_at = $date->format('d/m/Y');
             $this->data['item'] =  $item_serach;

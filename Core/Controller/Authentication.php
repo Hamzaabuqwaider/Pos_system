@@ -79,7 +79,7 @@ class Authentication extends Controller
 
         //! Check if the user has permissions to access the site
         if (empty($logged_in_user->permissions)) {
-            $this->invalid_redirect("You don't have Access to the site");
+            $this->invalid_redirect("You don't have Access to the Website");
             $_SESSION['error_type'] = "error";
         }
 

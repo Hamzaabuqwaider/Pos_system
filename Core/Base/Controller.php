@@ -13,6 +13,8 @@ abstract class Controller
     protected $view = null; // posts.edit
     protected $data = array();
 
+
+
     protected function view()
     {
         new View($this->view, $this->data);

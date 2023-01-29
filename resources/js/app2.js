@@ -113,3 +113,86 @@ if (window.location.href === "http://pos.project:8080/dashboard") {
         border();
     }, 1800)
 }
+
+
+
+
+$('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    Swal.fire({
+        title: 'Are you sure Delete User ?',
+        text: "You won't be able to revert this!",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Delete'
+
+    }).then((result) => {
+        if (result.value) {
+            window.location.href = url;
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'The transaction deleted',
+                showConfirmButton: false,
+                timer: 30000
+            })
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            event.preventDefault();
+        }
+    })
+});
+
+
+$('.delete-trans').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    Swal.fire({
+        title: 'Are you sure Delete Transaction?',
+        text: "You won't be able to revert this!",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Delete'
+
+    }).then((result) => {
+        if (result.value) {
+            window.location.href = url;
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'The transaction deleted',
+                showConfirmButton: false,
+                timer: 30000
+            })
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            event.preventDefault();
+        }
+    })
+});
+
+
+$('.delete-item').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    Swal.fire({
+        title: 'Are you sure Delete Transaction?',
+        text: "You won't be able to revert this!",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Delete'
+
+    }).then((result) => {
+        if (result.value) {
+            window.location.href = url;
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'The item deleted',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            event.preventDefault();
+        }
+    })
+});

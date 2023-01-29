@@ -301,11 +301,11 @@ class Users extends Controller
                 $this->view = 'users.user-profile';
                 $user = new User();
                 $selected_user = $user->get_by_id($_SESSION['user']['user_id']);
-                $this->data['info'] = $selected_user;
                 $date_create = new \DateTime($selected_user->created_at);
                 $date_update = new \DateTime($selected_user->updated_at);
                 $selected_user->created_at = $date_create->format('d/m/Y');
                 $selected_user->updated_at = $date_update->format('d/m/Y');
+                $this->data['info'] = $selected_user;
         }
 
         /**

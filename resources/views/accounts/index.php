@@ -45,7 +45,7 @@
                         </td>
                         <td>
                             <a href="/account/edit?id=<?= $transaction->transacion_id ?>&item_name=<?= $transaction->title ?>"><i id="edit" class="fa-solid fa-pen-to-square pe-3"></i></a>
-                            <a href="/account/delete?id=<?= $transaction->transacion_id ?>&item_id=<?= $transaction->item_id ?>"><i id="trash" class="fa-solid fa-trash"></i></a>
+                            <a href="/account/delete?id=<?= $transaction->transacion_id ?>&item_id=<?= $transaction->item_id ?>" class="delete-trans"><i id="trash" class="fa-solid fa-trash"></i></a>
 
                         </td>
                     </tr>

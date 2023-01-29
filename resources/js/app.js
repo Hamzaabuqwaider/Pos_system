@@ -25,6 +25,36 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
             }
         }
 
+
+        function run_item() {
+            addItem.attr({
+                disabled: true,
+            });
+            get_status();
+            swal({
+                title: 'The item input is more than quantity in the stock',
+                text: 'Redirecting...',
+                icon: 'warning',
+                timer: 2000,
+                buttons: false,
+            });
+        }
+
+
+        //! fetch all items and show in the input select
+        $.ajax({
+            type: "get",
+            url: "http://pos.project:8080/api/items",
+            success: function (response) {
+                var id_data = 1;
+                response.body.forEach(element => {
+                    $('#items').append(`
+                        <option id = "${id_data++}" value = ${element.id}> ${element.title}</option>
+                        `);
+                });
+            }
+        });
+
         //! get all transactions today  and delete transactions
         $.ajax({
             type: "get",
@@ -81,65 +111,78 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
 
 
 
-        //! fetch all items and show in the input select
-        $.ajax({
-            type: "get",
-            url: "http://pos.project:8080/api/items",
-            success: function (response) {
-                var id_data = 1;
-                response.body.forEach(element => {
-                    $('#items').append(`
-                <option id = "${id_data++}" value = ${element.id}> ${element.title}</option>
-                `);
-                });
-            }
-        });
 
 
         //! get item by id sellected from input select 
+        // $("#items").change(function () {
+        //     item_id = $(this).children(":selected").attr("value")
+        //     $.ajax({
+        //         type: "post",
+        //         url: "http://pos.project:8080/api/item",
+        //         data: JSON.stringify({ id: item_id }),
+        //         success: function (response) {
+        //             $("#quantity").attr({
+        //                 "max": response.body.quantity,
+        //                 "value": $("#quantity").val(),        // substitute your own         // values (or variables) here
+        //             });
+
+        //             x = response.body.quantity;
+        //             $('#quantity').change(function () {
+        //                 quantity_item = $('#quantity').val();
+        //                 if (parseInt(quantity_item) > parseInt(response.body.quantity)) {
+        //                     addItem.attr({
+        //                         "disabled": true
+        //                     })
+        //                     get_status()
+        //                 } else {
+
+        //                     $("#price").attr({
+        //                         "value": response.body.price * $('#quantity').val(),        // substitute your own         // values (or variables) here
+        //                     });
+
+        //                     addItem.attr({
+        //                         "disabled": false
+        //                     })
+        //                     get_status()
+        //                 }
+        //             });
+        //         },
+        //     });
+
+        // });
+
+
+
+        //! get item bu id sellected from input s
         $("#items").change(function () {
-            item_id = $(this).children(":selected").attr("value")
+            item_id = $(this).children(":selected").attr("value");
             $.ajax({
                 type: "post",
                 url: "http://pos.project:8080/api/item",
                 data: JSON.stringify({ id: item_id }),
                 success: function (response) {
                     $("#quantity").attr({
-                        "max": response.body.quantity,
-                        "value": $("#quantity").val(),        // substitute your own         // values (or variables) here
+                        max: response.body.quantity,
+                        value: $("#quantity").val(), // substitute your own         // values (or variables) here
                     });
 
+                    $("#quantity").change(function () {
+                        quantity_item = $("#quantity").val();
 
-                    $('#quantity').change(function () {
-                        quantity_item = $('#quantity').val();
                         if (quantity_item > response.body.quantity) {
-                            addItem.attr({
-                                "disabled": true
-                            })
-                            get_status()
-                            swal({
-                                title: 'The item input is more than quantity in the stock',
-                                text: 'Redirecting...',
-                                icon: 'warning',
-                                timer: 2000,
-                                buttons: false,
-                            });
+                            run_item();
                         } else {
-
                             $("#price").attr({
-                                "value": response.body.price * $('#quantity').val(),        // substitute your own         // values (or variables) here
+                                value: response.body.price * $("#quantity").val(), // substitute your own         // values (or variables) here
                             });
-
                             addItem.attr({
-                                "disabled": false
-                            })
-                            get_status()
-
+                                disabled: false,
+                            });
+                            get_status();
                         }
                     });
                 },
             });
-
         });
 
 
@@ -214,9 +257,9 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                     },
                     error: function (e) {
                         swal({
-                            title: 'You must select the item name or input quantity',
+                            title: 'The item is empty',
                             text: 'Redirecting...',
-                            icon: 'error',
+                            icon: 'warning',
                             timer: 2000,
                             buttons: false,
                         });
@@ -224,7 +267,7 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                 });
             } else {
                 swal({
-                    title: 'You must enter the required quantity or required item',
+                    title: 'You must required item name or quantity',
                     text: 'Redirecting...',
                     icon: 'warning',
                     timer: 2000,

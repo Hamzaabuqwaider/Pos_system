@@ -23,7 +23,7 @@ class Router
     {
 
         $request = $_SERVER['REQUEST_URI'];
-        // [0] /posts/edit [1] id = 3
+        // [0] /posts/edit
         $request = \explode("?", $request)[0];
         $routes = array();
 
@@ -34,13 +34,8 @@ class Router
             case 'POST':
                 $routes = self::$post_routes;
                 break;
-            case 'PUT':
-                $routes = self::$put_routes;
-                break;
-            case 'DELETE':
-                $routes = self::$delete_routes;
-                break;
         }
+        //request => routes[request]
         //users => users.index
         if (empty($routes) || !array_key_exists($request, $routes)) {
             http_response_code(404);
@@ -54,7 +49,6 @@ class Router
         $class = $controller_namespace . $class_name;
 
         $instence = new $class;
-
         if (count($class_arr) == 2) {
             //posts.edit
             call_user_func([$instence, $class_arr[1]]);
@@ -71,15 +65,5 @@ class Router
     public static function post($route, $controller): void
     {
         self::$post_routes[$route] = $controller;
-    }
-
-    public static function put($route, $controller): void
-    {
-        self::$put_routes[$route] = $controller;
-    }
-
-    public static function delete($route, $controller): void
-    {
-        self::$delete_routes[$route] = $controller;
     }
 }

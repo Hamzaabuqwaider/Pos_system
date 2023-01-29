@@ -13,8 +13,9 @@
             <p class="card-text"><strong>updated_at <?= $data->user->updated_at ?></strong></p>
             <div class="mt-5 d-flex flex-row justify-content-around gap-3">
                 <a href="/users"><i class="fa-solid fa-backward fa-2x"></i></a>
-                <a href="/users/edit?id=<?= $data->user->id ?>"><i style="color: yellow;" class="fa-solid fa-pen-to-square fa-2x"></i></a>
-                <a href="/users/delete?id=<?= $data->user->id ?>" onclick="return confirm('Are You Sure Delete <?= $data->user->display_name ?>  ?')"><i style="color: red;" class="fa-solid fa-trash fa-2x"></i></a>
+
+                <a href="/users/edit?id=<?= $data->user->id ?>" data-id="<?= $data->user->username ?>"><i style="color: yellow;" class="fa-solid fa-pen-to-square fa-2x"></i></a>
+                <a href="/users/delete?id=<?= $data->user->id ?>" class="delete-confirm"><i style="color: red;" class="fa-solid fa-trash fa-2x"></i></a>
             </div>
         </div>
     </div>

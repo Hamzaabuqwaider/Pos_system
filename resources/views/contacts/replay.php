@@ -14,6 +14,7 @@ $user_select_contact = $user->get_by_id($user_contact);
 $replay = new Replay_contact();
 $replay_contacts = $replay->contact_replay($user_contact);
 ?>
+<h2>Replay To <span style="color:red;"><?= $user_select_contact->display_name ?></span></h2>
 <div class="container">
     <div class="d-flex justify-content-center align-items-center">
         <div class="row clearfix">

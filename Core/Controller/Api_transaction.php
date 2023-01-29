@@ -32,7 +32,6 @@ class Api_transaction extends Controller
 
     public function render()
     {
-
         header("Content-Type: application/json"); // changes the header information
         http_response_code($this->http_code); // set the HTTP Code for the response
         echo json_encode($this->response_schema); // convert the data to json format
@@ -156,7 +155,8 @@ class Api_transaction extends Controller
             $item = new Item();
             $item_result = $item->get_by_id($this->request_body['item_id']);
             if ($item_result->quantity == 0) {
-                throw new \Exception('The Item is empty!');
+                $_SESSION['message'] = "The Item is empty";
+                $_SESSION['error_type'] = "error";
                 die;
             } else if ($transaction_arr['quantity'] > $item_result->quantity) {
                 $_SESSION['message'] = "The Item in Stock is . $item_result->quantity ";
