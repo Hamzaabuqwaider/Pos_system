@@ -42,7 +42,7 @@ use Core\Helpers\Helper; ?>
 
 
         <div class="col-lg-4 col-md-4 w-auto  ps-2 mb-3">
-            <a href="/transactions/page">
+            <a href="/accounts/page">
                 <div id="Card-3" class="card-4">
                     <div class="card-body">
 
@@ -155,7 +155,7 @@ use Core\Helpers\Helper; ?>
             </tbody>
         </table>
     </div>
-    <div class="table-flex2">
+    <!-- <div class="table-flex2">
         <h3 class="text-center mt-4">Total quantity for each Items </h3>
 
         <table class="table table-bordered align-middle mb-0 bg-white table-mobile">
@@ -193,8 +193,12 @@ use Core\Helpers\Helper; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
+    </div> -->
+    <canvas id="myChart" style="width:100%; max-width:600px; height:500px;">
+    </canvas>
 </div>
+
+
 <?php } else {
 
         $_SESSION['message'] = "You do not have permission to access this page";

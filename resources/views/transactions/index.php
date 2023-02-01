@@ -16,7 +16,7 @@
         </div>
         <div class="input-group div-padding ps-2">
             <span class="input-group-text" id="addon-wrapping">Total</span>
-            <input id="price" type="text" value="" class="form-control" aria-describedby="addon-wrapping" min="0" required>
+            <input id="price" type="text" readonly value="" class="form-control" aria-describedby="addon-wrapping" min="0" required>
         </div>
         <button id="add-item" type="submit" class="ms-2 btn btn-success div-padding-b"></button>
     </form>

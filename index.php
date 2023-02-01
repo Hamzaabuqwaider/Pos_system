@@ -5,7 +5,6 @@ use Core\Router;
 use Core\Model\User;
 
 
-error_reporting(E_ALL ^ E_NOTICE);
 
 /**
  *! The funtion get the class name after called the class 
@@ -39,7 +38,7 @@ if (isset($_COOKIE['user_id']) && !isset($_SESSION['user'])) { // check if there
 
 
 //! For web administrators
-Router::get('/login', "authentication.login"); // Displays the login form (HTML)
+Router::get('/', "authentication.login"); // Displays the login form (HTML)
 Router::get('/logout', "authentication.logout"); // Logs the user out
 Router::post('/authenticate', "authentication.validate"); // validate the user logged in and check information is true or false
 
@@ -78,6 +77,7 @@ Router::get('/api/items', 'api_transaction.items');
 Router::get('/api/transaction', 'api_transaction.index');
 Router::post('/api/transaction/create', 'api_transaction.transaction_create');
 Router::post('/api/transaction/delete', 'api_transaction.transaction_delete');
+Router::get('/api/item/quantity', 'api_transaction.item_quantity');
 
 
 //! Route of transactions page and view page ajax

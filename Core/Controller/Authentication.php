@@ -8,7 +8,6 @@ use Core\Model\User;
 
 class Authentication extends Controller
 {
-    private $user = null;
 
     public function render()
     {
@@ -141,13 +140,13 @@ class Authentication extends Controller
         \session_destroy();
         \session_unset();
         \setcookie('user_id', '', time() - 3600); // destroy the cookie by setting a past expiry date
-        Helper::redirect('/login');
+        Helper::redirect('/');
     }
 
     private function invalid_redirect($msg)
     {
         $_SESSION['message'] = $msg;
-        Helper::redirect('/login');
+        Helper::redirect('/');
         die;
     }
 }

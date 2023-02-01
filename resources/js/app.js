@@ -4,18 +4,20 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
         var user_id = $('#user_id');
         var item_id;
         var quantity_item;
-        const items = $('#items');
-        const quantity = $('#quantity');
         const price = $('#price');
         const addItem = $('#add-item');
         const table = $('tbody');
         const totalSalesElement = $('#total-sales');
         let totalSales = 0;
 
+
+
         document.getElementById('add-item').innerHTML = "Add";
-
         const a = document.getElementById('add-item');
-
+        /**
+         *! The function call when the quantity value more than quantity in the stock
+         *! add the attribute from button add and change the text content
+         */
         function get_status() {
 
             if (a.hasAttribute('disabled')) {
@@ -25,19 +27,14 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
             }
         }
 
-
+        /**
+         *! The function call when the quantity value more than quantity in the stock
+         */
         function run_item() {
             addItem.attr({
                 disabled: true,
             });
             get_status();
-            swal({
-                title: 'The item input is more than quantity in the stock',
-                text: 'Redirecting...',
-                icon: 'warning',
-                timer: 2000,
-                buttons: false,
-            });
         }
 
 
@@ -55,7 +52,9 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
             }
         });
 
-        //! get all transactions today  and delete transactions
+
+        //! get all transactions today and delete transactions 
+        //! and get all transactions by creating user login 
         $.ajax({
             type: "get",
             url: "http://pos.project:8080/api/transaction",
@@ -98,64 +97,23 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                             },
                             error: function (e) {
                             }
-
                         });
                     })
                     totalSales = parseInt(totalSales) + parseInt(element.total);
                 });
-
-
                 totalSalesElement.text(totalSales);
             }
         });
 
 
-
-
-
-        //! get item by id sellected from input select 
-        // $("#items").change(function () {
-        //     item_id = $(this).children(":selected").attr("value")
-        //     $.ajax({
-        //         type: "post",
-        //         url: "http://pos.project:8080/api/item",
-        //         data: JSON.stringify({ id: item_id }),
-        //         success: function (response) {
-        //             $("#quantity").attr({
-        //                 "max": response.body.quantity,
-        //                 "value": $("#quantity").val(),        // substitute your own         // values (or variables) here
-        //             });
-
-        //             x = response.body.quantity;
-        //             $('#quantity').change(function () {
-        //                 quantity_item = $('#quantity').val();
-        //                 if (parseInt(quantity_item) > parseInt(response.body.quantity)) {
-        //                     addItem.attr({
-        //                         "disabled": true
-        //                     })
-        //                     get_status()
-        //                 } else {
-
-        //                     $("#price").attr({
-        //                         "value": response.body.price * $('#quantity').val(),        // substitute your own         // values (or variables) here
-        //                     });
-
-        //                     addItem.attr({
-        //                         "disabled": false
-        //                     })
-        //                     get_status()
-        //                 }
-        //             });
-        //         },
-        //     });
-
-        // });
-
-
-
-        //! get item bu id sellected from input s
         $("#items").change(function () {
-            item_id = $(this).children(":selected").attr("value");
+            return_change_quantity()
+        });
+        //! get item by id sellected from input select 
+
+        function return_change_quantity() {
+
+            item_id = $("#items").children(":selected").attr("value");
             $.ajax({
                 type: "post",
                 url: "http://pos.project:8080/api/item",
@@ -183,8 +141,8 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                     });
                 },
             });
-        });
 
+        }
 
 
         //! create transaction and update item quantity from table item and save the user_id created the transaction and transaction_id from this transaction
@@ -254,6 +212,7 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                         });
                         totalSalesElement.text(totalSales);
 
+                        return_change_quantity()
                     },
                     error: function (e) {
                         swal({
@@ -267,7 +226,7 @@ if (window.location.href === 'http://pos.project:8080/transactions/page') {
                 });
             } else {
                 swal({
-                    title: 'You must required item name or quantity',
+                    title: 'You must required quntity or item is empty',
                     text: 'Redirecting...',
                     icon: 'warning',
                     timer: 2000,

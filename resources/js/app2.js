@@ -1,9 +1,3 @@
-"use strict";
-
-
-// append(`
-//                 <option id = "${id_data++}" value = ${element.id}> ${element.title}</option>
-//                 `);
 //! fetch all contacts and show in the tabel
 
 $.ajax({
@@ -50,6 +44,8 @@ const active = document.querySelectorAll("ul li a").forEach((item) => {
         return;
     }
 });
+
+
 
 const add_title = () => {
     let title_page = document.createElement('title');
@@ -130,13 +126,6 @@ $('.delete-confirm').on('click', function (event) {
     }).then((result) => {
         if (result.value) {
             window.location.href = url;
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'The transaction deleted',
-                showConfirmButton: false,
-                timer: 30000
-            })
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             event.preventDefault();
         }
@@ -157,13 +146,6 @@ $('.delete-trans').on('click', function (event) {
     }).then((result) => {
         if (result.value) {
             window.location.href = url;
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'The transaction deleted',
-                showConfirmButton: false,
-                timer: 30000
-            })
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             event.preventDefault();
         }
@@ -184,15 +166,49 @@ $('.delete-item').on('click', function (event) {
     }).then((result) => {
         if (result.value) {
             window.location.href = url;
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'The item deleted',
-                showConfirmButton: false,
-                timer: 1500
-            })
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             event.preventDefault();
         }
     })
 });
+
+
+
+$.ajax({
+    type: "get",
+    url: "http://pos.project:8080/api/item/quantity",
+    success: function (response) {
+        var barColors = [];
+        for (let index = 0; index < response.body.length; index++) {
+            barColors.push("#" + Math.floor(Math.random() * 16777215).toString(16));
+        }
+        var xValues = [];
+        var yValues = [];
+
+        response.body.forEach(element => {
+            xValues.push(element.title);
+            yValues.push(parseInt(element.quantity));
+        });
+
+        new Chart("myChart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "The quantity of each itemm"
+                }
+            }
+        });
+    },
+});
+
+
+
+
